@@ -1,5 +1,5 @@
 # misc
 .env
-
+yarn.lock
 # dependencies
 /node_modules
