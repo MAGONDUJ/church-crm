@@ -5,6 +5,6 @@ clone repo
 add .env with:  
 - dbUri=
   
-##RUN  
+### RUN  
 - yarn
 - yarn dev or yarn start  
