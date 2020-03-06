@@ -1,5 +1,6 @@
 # church-crm
-church membership management  
+church membership management 
+#  
 clone repo  
 - add .env with:  
 - dbUri=
