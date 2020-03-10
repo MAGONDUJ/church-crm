@@ -5,7 +5,7 @@ const chalk = require("chalk");
 const helpers = require("../helpers");
 const utils = require("../utils");
 
-router.post("/membership/add", async (req, res) => {
+router.post("/add", async (req, res) => {
   console.log(
     chalk.blackBright(">>>>>>>>>>>>>>|adding a member|>>>>>>>>>>>>>>")
   );

@@ -1,4 +1,8 @@
 // Override default variables before the import
-$body-bg: #000;
+$body-bg: #fff;
 // Import Bootstrap and its default variables
 @import "~bootstrap/scss/bootstrap.scss";
+.padding-0 {
+  padding-right: 0;
+  padding-left: 0;
+}

@@ -23,8 +23,10 @@ const connect = uri => {
 };
 
 const memberModel = require("./memberModel");
+const familyModel = require("./familyModel");
 
 module.exports = {
   connect,
-  memberModel
+  memberModel,
+  familyModel
 };
