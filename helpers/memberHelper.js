@@ -3,24 +3,27 @@ const Family = require("../models").familyModel;
 
 newMember = async params => {
   let isSuccessful = false;
-  if (params.familyMemberNo == "none" || params.familyMemberNo == "") {
+  if (params.familyMemberNo == "New" || params.familyMemberNo == "") {
     params.familyMemberNo = params.memberNo;
     params.familyMember = params.surName;
+    params.familyMemberPhone = params.phoneOne;
   }
-  Family.findOne({ familyMemberNo: params.familyMemberNo }).then(record => {
-    if (!record) {
-      const newFamily = new Family(params);
-      Family.init().then(() => {
-        newFamily.save().then(srs => {
-          if (srs) {
-            console.log("New family saved");
-          }
+  await Family.findOne({ familyMemberNo: params.familyMemberNo }).then(
+    record => {
+      if (!record) {
+        const newFamily = new Family(params);
+        Family.init().then(() => {
+          newFamily.save().then(srs => {
+            if (srs) {
+              console.log("New family saved");
+            }
+          });
         });
-      });
+      }
     }
-  });
+  );
   const newMember = new Member(params);
-  Member.init().then(() => {
+  await Member.init().then(() => {
     newMember.save().then(results => {
       if (results) {
         isSuccessful = true;
@@ -30,6 +33,22 @@ newMember = async params => {
   return isSuccessful;
 };
 
+getFamilies = async () => {
+  let isSuccessful = false;
+  let row = {};
+  await Family.find().then(async record => {
+    if (record) {
+      row = record;
+      isSuccessful = true;
+    }
+  });
+  return {
+    isSuccessful,
+    row
+  };
+};
+
 module.exports = {
-  newMember
+  newMember,
+  getFamilies
 };

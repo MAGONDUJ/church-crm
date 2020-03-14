@@ -21,6 +21,9 @@ const MemberSchema = new Schema({
   gender: {
     type: String
   },
+  idNumber: {
+    type: String
+  },
   dob: {
     type: String
   },
@@ -109,6 +112,9 @@ const MemberSchema = new Schema({
     type: String
   },
   professionalData: {
+    type: String
+  },
+  professionalDataOS: {
     type: String
   },
   createdAt: {

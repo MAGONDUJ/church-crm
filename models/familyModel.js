@@ -9,6 +9,9 @@ const FamilySchema = new Schema({
   familyMemberNo: {
     type: String
   },
+  familyMemberPhone: {
+    type: String
+  },
   createdAt: {
     type: Date,
     default: Date.now

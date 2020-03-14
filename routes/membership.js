@@ -16,6 +16,7 @@ router.post("/add", async (req, res) => {
   params.middleName = req.body.middleName;
   params.surName = req.body.surName;
   params.gender = req.body.gender;
+  params.idNumber = req.body.idNumber;
   params.dob = req.body.dob;
   params.maritalStatus = req.body.maritalStatus;
   params.maritalStatusDesc = req.body.maritalStatusDesc;
@@ -46,7 +47,8 @@ router.post("/add", async (req, res) => {
   params.churchPastor = req.body.churchPastor;
   params.churchPastorContact = req.body.churchPastorContact;
   params.professionalData = req.body.professionalData;
-  console(params);
+  params.professionalDataOS = req.body.professionalDataOS;
+  console.log(params);
 
   if (await helpers.newMember(params)) {
     res.status(200).json({
@@ -57,6 +59,18 @@ router.post("/add", async (req, res) => {
     res.json({
       message: "Failed",
       details: "Error adding Member"
+    });
+  }
+});
+router.get("/families", async (req, res) => {
+  console.log(chalk.yellow("========|Getting Families|======"));
+  let getTxn = await helpers.getFamilies();
+  if (getTxn.isSuccessful) {
+    res.status(200).json(getTxn.row);
+  } else {
+    res.json({
+      message: "Failed",
+      details: "Error getting families"
     });
   }
 });

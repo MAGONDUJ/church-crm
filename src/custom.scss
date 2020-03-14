@@ -1,8 +1,18 @@
 // Override default variables before the import
 $body-bg: #fff;
+$break-small: 768px;
+$break-large: 1200px;
 // Import Bootstrap and its default variables
 @import "~bootstrap/scss/bootstrap.scss";
 .padding-0 {
+  padding-right: 0;
+  padding-left: 0;
+  @media screen and (max-width: $break-small) {
+    padding-right: 5;
+    padding-left: 20px;
+  }
+}
+.padding-right-0 {
   padding-right: 0;
   padding-left: 0;
 }

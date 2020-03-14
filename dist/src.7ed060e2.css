@@ -19652,5 +19652,16 @@ h3 {
   padding-right: 0;
   padding-left: 0;
 }
+@media screen and (max-width: 768px) {
+  .padding-0 {
+    padding-right: 5;
+    padding-left: 20px;
+  }
+}
+
+.padding-right-0 {
+  padding-right: 0;
+  padding-left: 0;
+}
 
 /*# sourceMappingURL=/src.7ed060e2.css.map */
