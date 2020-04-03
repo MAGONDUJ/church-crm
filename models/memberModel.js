@@ -6,6 +6,9 @@ const MemberSchema = new Schema({
   memberNo: {
     type: String
   },
+  profileImg: {
+    type: String
+  },
   title: {
     type: String
   },

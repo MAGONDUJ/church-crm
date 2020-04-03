@@ -1,16 +1,58 @@
 const express = require("express");
 const router = express.Router();
 const chalk = require("chalk");
+const multer = require("multer");
+const uuidv4 = require("uuid/v4");
 
 const helpers = require("../helpers");
 const utils = require("../utils");
 
+// SET STORAGE
+const DIR = "./public/uploads/";
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, DIR);
+  },
+  filename: (req, file, cb) => {
+    const fileName = file.originalname
+      .toLowerCase()
+      .split(" ")
+      .join("-");
+    cb(null, uuidv4() + "-" + fileName);
+  }
+});
+
+var upload = multer({
+  storage: storage,
+  fileFilter: (req, file, cb) => {
+    if (
+      file.mimetype == "image/png" ||
+      file.mimetype == "image/jpg" ||
+      file.mimetype == "image/jpeg"
+    ) {
+      cb(null, true);
+    } else {
+      cb(null, false);
+      return cb(new Error("Only .png, .jpg and .jpeg format allowed!"));
+    }
+  }
+});
+router.post("/upload", upload.single("myFile"), async (req, res, next) => {
+  const url = req.protocol + "://" + req.get("host");
+  res.status(200).json({
+    message: "Success",
+    details: "File Uploaded successfully",
+    profileImg: url + "/public/uploads/" + req.file.filename
+  });
+});
 router.post("/add", async (req, res) => {
   console.log(
     chalk.blackBright(">>>>>>>>>>>>>>|adding a member|>>>>>>>>>>>>>>")
   );
   let params = {};
   params.memberNo = await utils.memberNoGenerator();
+  params.profileImg = req.body.profileImg;
   params.title = req.body.title;
   params.firstName = req.body.firstName;
   params.middleName = req.body.middleName;

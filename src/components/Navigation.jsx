@@ -27,9 +27,14 @@ class Navigation extends Component {
   render() {
     return (
       <Router>
-        <MDBNavbar color="indigo" dark expand="md" className="sticky-top">
+        <MDBNavbar
+          color="purple"
+          dark
+          expand="md"
+          className="sticky-top .bg-info"
+        >
           <MDBNavbarBrand>
-            <strong className="white-text">Church CRM</strong>
+            <img width="30" src={require("../../public/favicon.png")} />
           </MDBNavbarBrand>
           <MDBNavbarToggler onClick={this.toggleCollapse} />
           <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>

@@ -30527,7 +30527,7 @@ function createReactContext(defaultValue, calculateChangedBits) {
 var index = _react.default.createContext || createReactContext;
 var _default = index;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","@babel/runtime/helpers/inheritsLoose":"../node_modules/@babel/runtime/helpers/inheritsLoose.js","prop-types":"../node_modules/prop-types/index.js","gud":"../node_modules/gud/index.js","tiny-warning":"../node_modules/tiny-warning/dist/tiny-warning.esm.js"}],"../node_modules/react-router/node_modules/isarray/index.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","@babel/runtime/helpers/inheritsLoose":"../node_modules/@babel/runtime/helpers/inheritsLoose.js","prop-types":"../node_modules/prop-types/index.js","gud":"../node_modules/gud/index.js","tiny-warning":"../node_modules/tiny-warning/dist/tiny-warning.esm.js"}],"../node_modules/isarray/index.js":[function(require,module,exports) {
 module.exports = Array.isArray || function (arr) {
   return Object.prototype.toString.call(arr) == '[object Array]';
 };
@@ -30960,7 +30960,7 @@ function pathToRegexp (path, keys, options) {
   return stringToRegexp(/** @type {string} */ (path), /** @type {!Array} */ (keys), options)
 }
 
-},{"isarray":"../node_modules/react-router/node_modules/isarray/index.js"}],"../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js":[function(require,module,exports) {
+},{"isarray":"../node_modules/isarray/index.js"}],"../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46355,7 +46355,9 @@ Lt.propTypes = {
   noteColor: 'primary',
   tag: 'p'
 };
-},{"react":"../node_modules/react/index.js","classnames":"../node_modules/classnames/index.js","prop-types":"../node_modules/prop-types/index.js","react-transition-group":"../node_modules/react-transition-group/esm/index.js","react-dom":"../node_modules/react-dom/index.js","mdbreact":"../node_modules/mdbreact/dist/mdbreact.esm.js","react-popper":"../node_modules/react-popper/lib/esm/index.js","react-numeric-input":"../node_modules/react-numeric-input/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","focus-trap-react":"../node_modules/focus-trap-react/dist/focus-trap-react.js","popper.js":"../node_modules/popper.js/dist/esm/popper.js"}],"../src/components/Navigation.jsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","classnames":"../node_modules/classnames/index.js","prop-types":"../node_modules/prop-types/index.js","react-transition-group":"../node_modules/react-transition-group/esm/index.js","react-dom":"../node_modules/react-dom/index.js","mdbreact":"../node_modules/mdbreact/dist/mdbreact.esm.js","react-popper":"../node_modules/react-popper/lib/esm/index.js","react-numeric-input":"../node_modules/react-numeric-input/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","focus-trap-react":"../node_modules/focus-trap-react/dist/focus-trap-react.js","popper.js":"../node_modules/popper.js/dist/esm/popper.js"}],"favicon.png":[function(require,module,exports) {
+module.exports = "/favicon.2e70f008.png";
+},{}],"../src/components/Navigation.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46426,13 +46428,14 @@ var Navigation = /*#__PURE__*/function (_Component) {
     key: "render",
     value: function render() {
       return _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement(_mdbreact.MDBNavbar, {
-        color: "indigo",
+        color: "purple",
         dark: true,
         expand: "md",
-        className: "sticky-top"
-      }, _react.default.createElement(_mdbreact.MDBNavbarBrand, null, _react.default.createElement("strong", {
-        className: "white-text"
-      }, "Church CRM")), _react.default.createElement(_mdbreact.MDBNavbarToggler, {
+        className: "sticky-top .bg-info"
+      }, _react.default.createElement(_mdbreact.MDBNavbarBrand, null, _react.default.createElement("img", {
+        width: "30",
+        src: require("../../public/favicon.png")
+      })), _react.default.createElement(_mdbreact.MDBNavbarToggler, {
         onClick: this.toggleCollapse
       }), _react.default.createElement(_mdbreact.MDBCollapse, {
         id: "navbarCollapse3",
@@ -46458,7 +46461,7 @@ var Navigation = /*#__PURE__*/function (_Component) {
 
 var _default = Navigation;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","mdbreact":"../node_modules/mdbreact/dist/mdbreact.esm.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js"}],"../src/components/SideNav.jsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","mdbreact":"../node_modules/mdbreact/dist/mdbreact.esm.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../../public/favicon.png":"favicon.png"}],"../src/components/SideNav.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46468,11 +46471,17 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _reactRouterDom = require("react-router-dom");
+
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -46482,45 +46491,132 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-// @flow
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var SideNav = /*#__PURE__*/function (_Component) {
   _inherits(SideNav, _Component);
 
-  function SideNav() {
+  function SideNav(props) {
+    var _this;
+
     _classCallCheck(this, SideNav);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(SideNav).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(SideNav).call(this, props));
+
+    _defineProperty(_assertThisInitialized(_this), "openNav", /*#__PURE__*/function () {
+      var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(event) {
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                event.preventDefault();
+
+                _this.setState({
+                  navState: 0
+                });
+
+              case 2:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      return function (_x) {
+        return _ref.apply(this, arguments);
+      };
+    }());
+
+    _defineProperty(_assertThisInitialized(_this), "closeNav", /*#__PURE__*/function () {
+      var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(event) {
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                event.preventDefault();
+
+                _this.setState({
+                  navState: 1
+                });
+
+              case 2:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }));
+
+      return function (_x2) {
+        return _ref2.apply(this, arguments);
+      };
+    }());
+
+    _this.state = {
+      navState: 0
+    };
+    _this.openNav = _this.openNav.bind(_assertThisInitialized(_this));
+    _this.closeNav = _this.closeNav.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(SideNav, [{
     key: "render",
     value: function render() {
-      return _react.default.createElement("div", {
-        className: "list-group  list-group-flush"
-      }, _react.default.createElement("a", {
-        href: "#",
-        className: "list-group-item list-group-item-secondary"
-      }, "Membership"), _react.default.createElement("a", {
-        href: "#",
-        className: "list-group-item list-group-item-secondary"
-      }, "Tithe"), _react.default.createElement("a", {
-        href: "#",
-        className: "list-group-item list-group-item-secondary"
-      }, "Sunday School"), _react.default.createElement("a", {
-        href: "#",
-        className: "list-group-item list-group-item-secondary"
-      }, "Events"), _react.default.createElement("a", {
-        href: "#",
-        className: "list-group-item list-group-item-secondary"
-      }, "Reports"));
+      if (this.state.navState == 0) {
+        return _react.default.createElement("div", null, _react.default.createElement("div", {
+          className: "sidenav",
+          style: {
+            width: "200px"
+          }
+        }, _react.default.createElement(_reactRouterDom.NavLink, {
+          to: "#",
+          className: "closebtn",
+          onClick: this.closeNav
+        }, " ", "\xD7"), _react.default.createElement("a", {
+          href: "/"
+        }, "Membership"), _react.default.createElement("a", {
+          href: "#"
+        }, "Giving"), _react.default.createElement("a", {
+          href: "#"
+        }, "Clients"), _react.default.createElement("a", {
+          href: "#"
+        }, "Contact")));
+      } else {
+        return _react.default.createElement("div", null, _react.default.createElement("div", {
+          className: "sidenav",
+          style: {
+            width: "0"
+          }
+        }, _react.default.createElement("a", {
+          href: "/"
+        }, "Membership"), _react.default.createElement("a", {
+          href: "#"
+        }, "Giving"), _react.default.createElement("a", {
+          href: "#"
+        }, "Clients"), _react.default.createElement("a", {
+          href: "#"
+        }, "Contact")), _react.default.createElement(_reactRouterDom.NavLink, {
+          to: "#",
+          style: {
+            fontSize: 30,
+            cursor: "pointer",
+            marginLeft: "50px",
+            color: "#fff",
+            position: "fixed"
+          },
+          onClick: this.openNav
+        }, "\u2630 Menu"));
+      }
     }
   }]);
 
@@ -46529,7 +46625,7 @@ var SideNav = /*#__PURE__*/function (_Component) {
 
 var _default = SideNav;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js"}],"../node_modules/axios/lib/helpers/bind.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js"}],"../node_modules/axios/lib/helpers/bind.js":[function(require,module,exports) {
 'use strict';
 
 module.exports = function bind(fn, thisArg) {
@@ -48348,17 +48444,115 @@ var HomePage = /*#__PURE__*/function (_Component) {
 
     _defineProperty(_assertThisInitialized(_this), "handleSubmit", /*#__PURE__*/function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(event) {
+        var formData, imgPath, params;
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                event.preventDefault();
-                _context.next = 3;
-                return axios.post("http://localhost:6800/api/membership/add", _this.state).then(function (response) {
+                event.preventDefault(); // TODO: do something with -> this.state.file
+                //console.log("handle uploading-", this.state.file);
+
+                formData = new FormData();
+                formData.append("myFile", _this.state.file);
+                imgPath = "";
+                _context.next = 6;
+                return axios.post("http://localhost:6800/api/membership/upload", formData).then(function (response) {
+                  //console.log(response.data.profileImg);
+                  imgPath = response.data.profileImg;
+                  console.log("The file is successfully uploaded");
+                }).catch(function (error) {});
+
+              case 6:
+                params = {
+                  profileImg: imgPath,
+                  title: _this.state.title,
+                  firstName: _this.state.firstName,
+                  middleName: _this.state.middleName,
+                  surName: _this.state.surName,
+                  idNumber: _this.state.idNumber,
+                  gender: _this.state.gender,
+                  dob: _this.state.dob,
+                  maritalStatus: _this.state.maritalStatus,
+                  maritalStatusDesc: _this.state.maritalStatusDesc,
+                  phoneOne: _this.state.phoneOne,
+                  phoneTwo: _this.state.phoneTwo,
+                  email: _this.state.email,
+                  box: _this.state.box,
+                  city: _this.state.city,
+                  code: _this.state.code,
+                  residenceCity: _this.state.residenceCity,
+                  geographicalArea: _this.state.geographicalArea,
+                  estate: _this.state.estate,
+                  road: _this.state.road,
+                  houseNo: _this.state.houseNo,
+                  joinYear: _this.state.joinYear,
+                  familyMember: _this.state.familyMember,
+                  familyMemberNo: _this.state.familyMemberNo,
+                  familyMemberRelationship: _this.state.familyMemberRelationship,
+                  familyMemberPhone: _this.state.familyMemberPhone,
+                  baptized: _this.state.baptized,
+                  baptizeDate: _this.state.baptizeDate,
+                  baptizePlace: _this.state.baptizePlace,
+                  baptizeNature: _this.state.baptizeNature,
+                  homeChurch: _this.state.homeChurch,
+                  churchCounty: _this.state.churchCounty,
+                  churchLocation: _this.state.churchLocation,
+                  churchLandMark: _this.state.churchLandMark,
+                  churchPastor: _this.state.churchPastor,
+                  churchPastorContact: _this.state.churchPastorContact,
+                  professionalData: _this.state.professionalData,
+                  professionalDataOS: _this.state.professionalDataOS
+                };
+                _context.next = 9;
+                return axios.post("http://localhost:6800/api/membership/add", params).then(function (response) {
                   console.log("Backend Response: ", response);
                 });
 
-              case 3:
+              case 9:
+                _this.setState({
+                  file: "",
+                  imagePreviewUrl: "",
+                  title: "",
+                  firstName: "",
+                  middleName: "",
+                  surName: "",
+                  idNumber: "",
+                  gender: "",
+                  dob: "",
+                  maritalStatus: "",
+                  maritalStatusDesc: "",
+                  phoneOne: "",
+                  phoneTwo: "",
+                  email: "",
+                  box: "",
+                  city: "",
+                  code: "",
+                  residenceCity: "",
+                  geographicalArea: "",
+                  estate: "",
+                  road: "",
+                  houseNo: "",
+                  joinYear: "",
+                  familyMember: "New",
+                  familyMemberNo: "",
+                  familyMemberRelationship: "",
+                  familyMemberPhone: "",
+                  baptized: "",
+                  baptizeDate: "",
+                  baptizePlace: "",
+                  baptizeNature: "",
+                  homeChurch: "",
+                  churchCounty: "",
+                  churchLocation: "",
+                  churchLandMark: "",
+                  churchPastor: "",
+                  churchPastorContact: "",
+                  professionalData: "",
+                  professionalDataOS: "",
+                  families: []
+                });
+
+              case 10:
               case "end":
                 return _context.stop();
             }
@@ -48372,6 +48566,8 @@ var HomePage = /*#__PURE__*/function (_Component) {
     }());
 
     _this.state = {
+      file: "",
+      imagePreviewUrl: "",
       title: "",
       firstName: "",
       middleName: "",
@@ -48393,7 +48589,7 @@ var HomePage = /*#__PURE__*/function (_Component) {
       road: "",
       houseNo: "",
       joinYear: "",
-      familyMember: "",
+      familyMember: "New",
       familyMemberNo: "",
       familyMemberRelationship: "",
       familyMemberPhone: "",
@@ -48455,8 +48651,9 @@ var HomePage = /*#__PURE__*/function (_Component) {
   }, {
     key: "handleChange",
     value: function handleChange(event) {
-      this.setState(_defineProperty({}, event.target.name, event.target.value));
-      console.log(event.target.name, event.target.value);
+      var _this3 = this;
+
+      this.setState(_defineProperty({}, event.target.name, event.target.value)); //console.log(event.target.name, event.target.value);
 
       if (event.target.name == "familyMember") {
         for (var i = 0; i < this.state.families.length; i++) {
@@ -48469,14 +48666,39 @@ var HomePage = /*#__PURE__*/function (_Component) {
           }
         }
       }
+
+      if (event.target.files) {
+        var reader = new FileReader();
+        var file = event.target.files[0];
+
+        reader.onloadend = function () {
+          _this3.setState({
+            file: file,
+            imagePreviewUrl: reader.result
+          });
+        };
+
+        reader.readAsDataURL(file);
+      }
     }
   }, {
     key: "render",
     value: function render() {
+      var imagePreviewUrl = this.state.imagePreviewUrl;
+      var $imagePreview = null;
+
+      if (imagePreviewUrl) {
+        $imagePreview = _react.default.createElement("img", {
+          className: "img-thumbnail",
+          width: "100",
+          src: imagePreviewUrl
+        });
+      }
+
       return _react.default.createElement("div", {
         className: "row"
       }, _react.default.createElement("div", {
-        className: "col-md-2 bg-light padding-right-0"
+        className: "col-md-2 bg-secondary padding-right-0"
       }, _react.default.createElement(_SideNav.default, null)), _react.default.createElement("div", {
         className: "col-md-10 padding-0"
       }, _react.default.createElement("div", {
@@ -48505,10 +48727,13 @@ var HomePage = /*#__PURE__*/function (_Component) {
       }, _react.default.createElement("form", null, _react.default.createElement("h3", null, "a. Personal Information"), _react.default.createElement("hr", null), _react.default.createElement("div", {
         className: "form-row"
       }, _react.default.createElement("div", {
-        className: "form-group col-md-1"
-      }, _react.default.createElement("label", null, "Title:")), _react.default.createElement("div", {
+        className: "form-group col-md-4"
+      }, _react.default.createElement("label", null, "Passport:"), _react.default.createElement("input", {
+        type: "file",
+        onChange: this.handleChange
+      }), _react.default.createElement("div", null, _react.default.createElement("br", null), $imagePreview)), _react.default.createElement("div", {
         className: "form-group col-md-2"
-      }, _react.default.createElement("select", {
+      }, _react.default.createElement("label", null, "Title:"), _react.default.createElement("select", {
         className: "form-control",
         style: {
           marginTop: "-5px"
@@ -48615,22 +48840,11 @@ var HomePage = /*#__PURE__*/function (_Component) {
         type: "radio",
         name: "maritalStatus",
         onChange: this.handleChange,
-        value: "Not Married",
-        checked: this.state.maritalStatus === "Not Married"
+        value: "Single",
+        checked: this.state.maritalStatus === "Single"
       }), _react.default.createElement("label", {
         className: "form-check-label"
-      }, "Not Married")), _react.default.createElement("div", {
-        className: "form-check form-check-inline"
-      }, _react.default.createElement("input", {
-        className: "form-check-input",
-        type: "radio",
-        name: "maritalStatus",
-        onChange: this.handleChange,
-        value: "Single Parent",
-        checked: this.state.maritalStatus === "Single Parent"
-      }), _react.default.createElement("label", {
-        className: "form-check-label"
-      }, "Single Parent")), _react.default.createElement("div", {
+      }, "Single")), _react.default.createElement("div", {
         className: "form-check form-check-inline"
       }, _react.default.createElement("input", {
         className: "form-check-input",
@@ -48642,7 +48856,10 @@ var HomePage = /*#__PURE__*/function (_Component) {
       }), _react.default.createElement("label", {
         className: "form-check-label"
       }, "Married"))), _react.default.createElement("div", {
-        className: "form-group col-md-4"
+        className: "form-group col-md-4",
+        style: this.state.maritalStatus === "Married" ? {} : {
+          display: "none"
+        }
       }, _react.default.createElement("label", {
         className: "form-check-label"
       }, "If Married:"), _react.default.createElement("select", {
@@ -48651,8 +48868,6 @@ var HomePage = /*#__PURE__*/function (_Component) {
         value: this.state.maritalStatusDesc,
         onChange: this.handleChange
       }, _react.default.createElement("option", {
-        value: ""
-      }, " "), _react.default.createElement("option", {
         value: "Married in Church"
       }, "Married in Church"), _react.default.createElement("option", {
         value: "Customary Marriage"
@@ -48666,7 +48881,7 @@ var HomePage = /*#__PURE__*/function (_Component) {
         value: "Widower"
       }, "Widower"), _react.default.createElement("option", {
         value: "Divorced"
-      }, "Divorced")))), _react.default.createElement("br", null), _react.default.createElement("h3", null, "b. Contact Information"), _react.default.createElement("hr", null), _react.default.createElement("div", {
+      }, "Divorced")))), _react.default.createElement("hr", null), _react.default.createElement("br", null), _react.default.createElement("h3", null, "b. Contact Information"), _react.default.createElement("hr", null), _react.default.createElement("div", {
         className: "form-row"
       }, _react.default.createElement("div", {
         className: "form-group col-md-4"
@@ -48720,7 +48935,11 @@ var HomePage = /*#__PURE__*/function (_Component) {
         className: "form-control"
       }))), _react.default.createElement("div", {
         className: "form-row"
-      }, _react.default.createElement("h5", null, "Residence Address")), _react.default.createElement("div", {
+      }, _react.default.createElement("h5", {
+        style: {
+          color: "#6c757d"
+        }
+      }, "Residence Address")), _react.default.createElement("div", {
         className: "form-row"
       }, _react.default.createElement("div", {
         className: "form-group col-md-2"
@@ -48776,7 +48995,7 @@ var HomePage = /*#__PURE__*/function (_Component) {
           key: "year".concat(index),
           value: year
         }, year);
-      })))), _react.default.createElement("br", null), _react.default.createElement("h3", null, "c. Family Members in AIC Milimani"), _react.default.createElement("hr", null), _react.default.createElement("div", {
+      })))), _react.default.createElement("hr", null), _react.default.createElement("br", null), _react.default.createElement("h3", null, "c. Family Members in AIC Milimani"), _react.default.createElement("hr", null), _react.default.createElement("div", {
         className: "form-row"
       }, _react.default.createElement("div", {
         className: "form-group col-md-3"
@@ -48791,6 +49010,10 @@ var HomePage = /*#__PURE__*/function (_Component) {
           value: item.familyMember
         }, item.familyMember);
       }))), _react.default.createElement("div", {
+        style: this.state.familyMember === "New" ? {
+          display: "none"
+        } : {}
+      }, _react.default.createElement("div", {
         className: "form-group col-md-3"
       }, _react.default.createElement("label", null, "Member number"), _react.default.createElement("input", {
         name: "familyMemberNo",
@@ -48814,7 +49037,7 @@ var HomePage = /*#__PURE__*/function (_Component) {
         onChange: this.handleChange,
         type: "text",
         className: "form-control"
-      }))), _react.default.createElement("br", null), _react.default.createElement("h3", null, "d. Spiritual Data"), _react.default.createElement("hr", null), _react.default.createElement("div", {
+      })))), _react.default.createElement("hr", null), _react.default.createElement("br", null), _react.default.createElement("h3", null, "d. Spiritual Data"), _react.default.createElement("hr", null), _react.default.createElement("div", {
         className: "form-row"
       }, _react.default.createElement("div", {
         className: "form-group col-md-3"
@@ -48880,7 +49103,7 @@ var HomePage = /*#__PURE__*/function (_Component) {
         checked: this.state.baptizeNature === "Other"
       }), _react.default.createElement("label", {
         className: "form-check-label"
-      }, "Other")))), _react.default.createElement("br", null), _react.default.createElement("h3", null, "e. Home Church"), _react.default.createElement("hr", null), _react.default.createElement("div", {
+      }, "Other")))), _react.default.createElement("hr", null), _react.default.createElement("br", null), _react.default.createElement("h3", null, "e. Home Church"), _react.default.createElement("hr", null), _react.default.createElement("div", {
         className: "form-row"
       }, _react.default.createElement("div", {
         className: "form-group col-md-3"
@@ -48932,7 +49155,7 @@ var HomePage = /*#__PURE__*/function (_Component) {
         onChange: this.handleChange,
         type: "text",
         className: "form-control"
-      }))), _react.default.createElement("br", null), _react.default.createElement("h3", null, "f. Professional Data"), _react.default.createElement("hr", null), _react.default.createElement("div", {
+      }))), _react.default.createElement("hr", null), _react.default.createElement("br", null), _react.default.createElement("h3", null, "f. Professional Data"), _react.default.createElement("hr", null), _react.default.createElement("div", {
         className: "form-row"
       }, _react.default.createElement("div", {
         className: "form-group col-md-5"
@@ -48978,7 +49201,7 @@ var HomePage = /*#__PURE__*/function (_Component) {
       }))), _react.default.createElement("button", {
         onClick: this.handleSubmit,
         className: "btn btn-info"
-      }, "Save"))))));
+      }, "\xA0 Save \xA0"))))));
     }
   }]);
 
@@ -57205,7 +57428,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56755" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53888" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

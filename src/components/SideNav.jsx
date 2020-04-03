@@ -1,27 +1,66 @@
 import React, { Component } from "react";
-// @flow
+import { NavLink } from "react-router-dom";
 
 class SideNav extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      navState: 0
+    };
+    this.openNav = this.openNav.bind(this);
+    this.closeNav = this.closeNav.bind(this);
+  }
+
+  openNav = async event => {
+    event.preventDefault();
+    this.setState({ navState: 0 });
+  };
+
+  closeNav = async event => {
+    event.preventDefault();
+    this.setState({ navState: 1 });
+  };
   render() {
-    return (
-      <div className="list-group  list-group-flush">
-        <a href="#" className="list-group-item list-group-item-secondary">
-          Membership
-        </a>
-        <a href="#" className="list-group-item list-group-item-secondary">
-          Tithe
-        </a>
-        <a href="#" className="list-group-item list-group-item-secondary">
-          Sunday School
-        </a>
-        <a href="#" className="list-group-item list-group-item-secondary">
-          Events
-        </a>
-        <a href="#" className="list-group-item list-group-item-secondary">
-          Reports
-        </a>
-      </div>
-    );
+    if (this.state.navState == 0) {
+      return (
+        <div>
+          <div className="sidenav" style={{ width: "200px" }}>
+            <NavLink to="#" className="closebtn" onClick={this.closeNav}>
+              {" "}
+              &times;
+            </NavLink>
+            <a href="/">Membership</a>
+            <a href="#">Giving</a>
+            <a href="#">Clients</a>
+            <a href="#">Contact</a>
+          </div>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <div className="sidenav" style={{ width: "0" }}>
+            <a href="/">Membership</a>
+            <a href="#">Giving</a>
+            <a href="#">Clients</a>
+            <a href="#">Contact</a>
+          </div>
+          <NavLink
+            to="#"
+            style={{
+              fontSize: 30,
+              cursor: "pointer",
+              marginLeft: "50px",
+              color: "#fff",
+              position: "fixed"
+            }}
+            onClick={this.openNav}
+          >
+            &#9776; Menu
+          </NavLink>
+        </div>
+      );
+    }
   }
 }
 

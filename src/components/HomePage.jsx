@@ -6,6 +6,8 @@ class HomePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      file: "",
+      imagePreviewUrl: "",
       title: "",
       firstName: "",
       middleName: "",
@@ -27,7 +29,7 @@ class HomePage extends Component {
       road: "",
       houseNo: "",
       joinYear: "",
-      familyMember: "",
+      familyMember: "New",
       familyMemberNo: "",
       familyMemberRelationship: "",
       familyMemberPhone: "",
@@ -82,7 +84,7 @@ class HomePage extends Component {
   }
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value });
-    console.log(event.target.name, event.target.value);
+    //console.log(event.target.name, event.target.value);
     if (event.target.name == "familyMember") {
       for (var i = 0; i < this.state.families.length; i++) {
         if (this.state.families[i].familyMember === event.target.value) {
@@ -94,19 +96,133 @@ class HomePage extends Component {
         }
       }
     }
+    if (event.target.files) {
+      let reader = new FileReader();
+      let file = event.target.files[0];
+
+      reader.onloadend = () => {
+        this.setState({
+          file: file,
+          imagePreviewUrl: reader.result
+        });
+      };
+      reader.readAsDataURL(file);
+    }
   }
   handleSubmit = async event => {
     event.preventDefault();
+    // TODO: do something with -> this.state.file
+    //console.log("handle uploading-", this.state.file);
+    const formData = new FormData();
+    formData.append("myFile", this.state.file);
+    let imgPath = "";
     await axios
-      .post("http://localhost:6800/api/membership/add", this.state)
+      .post("http://localhost:6800/api/membership/upload", formData)
+      .then(response => {
+        //console.log(response.data.profileImg);
+        imgPath = response.data.profileImg;
+        console.log("The file is successfully uploaded");
+      })
+      .catch(error => {});
+    let params = {
+      profileImg: imgPath,
+      title: this.state.title,
+      firstName: this.state.firstName,
+      middleName: this.state.middleName,
+      surName: this.state.surName,
+      idNumber: this.state.idNumber,
+      gender: this.state.gender,
+      dob: this.state.dob,
+      maritalStatus: this.state.maritalStatus,
+      maritalStatusDesc: this.state.maritalStatusDesc,
+      phoneOne: this.state.phoneOne,
+      phoneTwo: this.state.phoneTwo,
+      email: this.state.email,
+      box: this.state.box,
+      city: this.state.city,
+      code: this.state.code,
+      residenceCity: this.state.residenceCity,
+      geographicalArea: this.state.geographicalArea,
+      estate: this.state.estate,
+      road: this.state.road,
+      houseNo: this.state.houseNo,
+      joinYear: this.state.joinYear,
+      familyMember: this.state.familyMember,
+      familyMemberNo: this.state.familyMemberNo,
+      familyMemberRelationship: this.state.familyMemberRelationship,
+      familyMemberPhone: this.state.familyMemberPhone,
+      baptized: this.state.baptized,
+      baptizeDate: this.state.baptizeDate,
+      baptizePlace: this.state.baptizePlace,
+      baptizeNature: this.state.baptizeNature,
+      homeChurch: this.state.homeChurch,
+      churchCounty: this.state.churchCounty,
+      churchLocation: this.state.churchLocation,
+      churchLandMark: this.state.churchLandMark,
+      churchPastor: this.state.churchPastor,
+      churchPastorContact: this.state.churchPastorContact,
+      professionalData: this.state.professionalData,
+      professionalDataOS: this.state.professionalDataOS
+    };
+    await axios
+      .post("http://localhost:6800/api/membership/add", params)
       .then(response => {
         console.log("Backend Response: ", response);
       });
+    this.setState({
+      file: "",
+      imagePreviewUrl: "",
+      title: "",
+      firstName: "",
+      middleName: "",
+      surName: "",
+      idNumber: "",
+      gender: "",
+      dob: "",
+      maritalStatus: "",
+      maritalStatusDesc: "",
+      phoneOne: "",
+      phoneTwo: "",
+      email: "",
+      box: "",
+      city: "",
+      code: "",
+      residenceCity: "",
+      geographicalArea: "",
+      estate: "",
+      road: "",
+      houseNo: "",
+      joinYear: "",
+      familyMember: "New",
+      familyMemberNo: "",
+      familyMemberRelationship: "",
+      familyMemberPhone: "",
+      baptized: "",
+      baptizeDate: "",
+      baptizePlace: "",
+      baptizeNature: "",
+      homeChurch: "",
+      churchCounty: "",
+      churchLocation: "",
+      churchLandMark: "",
+      churchPastor: "",
+      churchPastorContact: "",
+      professionalData: "",
+      professionalDataOS: "",
+      families: []
+    });
   };
   render() {
+    let { imagePreviewUrl } = this.state;
+    let $imagePreview = null;
+    if (imagePreviewUrl) {
+      $imagePreview = (
+        <img className="img-thumbnail" width="100" src={imagePreviewUrl} />
+      );
+    }
     return (
       <div className="row">
-        <div className="col-md-2 bg-light padding-right-0">
+        <div className="col-md-2 bg-secondary padding-right-0">
           <SideNav />
         </div>
         <div className="col-md-10 padding-0">
@@ -134,10 +250,16 @@ class HomePage extends Component {
                 <h3>a. Personal Information</h3>
                 <hr />
                 <div className="form-row">
-                  <div className="form-group col-md-1">
-                    <label>Title:</label>
+                  <div className="form-group col-md-4">
+                    <label>Passport:</label>
+                    <input type="file" onChange={this.handleChange} />
+                    <div>
+                      <br />
+                      {$imagePreview}
+                    </div>
                   </div>
                   <div className="form-group col-md-2">
+                    <label>Title:</label>
                     <select
                       className="form-control"
                       style={{ marginTop: "-5px" }}
@@ -250,21 +372,10 @@ class HomePage extends Component {
                         type="radio"
                         name="maritalStatus"
                         onChange={this.handleChange}
-                        value="Not Married"
-                        checked={this.state.maritalStatus === "Not Married"}
+                        value="Single"
+                        checked={this.state.maritalStatus === "Single"}
                       />
-                      <label className="form-check-label">Not Married</label>
-                    </div>
-                    <div className="form-check form-check-inline">
-                      <input
-                        className="form-check-input"
-                        type="radio"
-                        name="maritalStatus"
-                        onChange={this.handleChange}
-                        value="Single Parent"
-                        checked={this.state.maritalStatus === "Single Parent"}
-                      />
-                      <label className="form-check-label">Single Parent</label>
+                      <label className="form-check-label">Single</label>
                     </div>
                     <div className="form-check form-check-inline">
                       <input
@@ -278,7 +389,14 @@ class HomePage extends Component {
                       <label className="form-check-label">Married</label>
                     </div>
                   </div>
-                  <div className="form-group col-md-4">
+                  <div
+                    className="form-group col-md-4"
+                    style={
+                      this.state.maritalStatus === "Married"
+                        ? {}
+                        : { display: "none" }
+                    }
+                  >
                     <label className="form-check-label">If Married:</label>
                     <select
                       className="form-control"
@@ -286,7 +404,6 @@ class HomePage extends Component {
                       value={this.state.maritalStatusDesc}
                       onChange={this.handleChange}
                     >
-                      <option value=""> </option>
                       <option value="Married in Church">
                         Married in Church
                       </option>
@@ -305,6 +422,7 @@ class HomePage extends Component {
                     </select>
                   </div>
                 </div>
+                <hr />
                 <br />
                 <h3>b. Contact Information</h3>
                 <hr />
@@ -374,7 +492,7 @@ class HomePage extends Component {
                   </div>
                 </div>
                 <div className="form-row">
-                  <h5>Residence Address</h5>
+                  <h5 style={{ color: "#6c757d" }}>Residence Address</h5>
                 </div>
                 <div className="form-row">
                   <div className="form-group col-md-2">
@@ -448,6 +566,7 @@ class HomePage extends Component {
                   </div>
                 </div>
 
+                <hr />
                 <br />
                 <h3>c. Family Members in AIC Milimani</h3>
                 <hr />
@@ -470,37 +589,46 @@ class HomePage extends Component {
                       })}
                     </select>
                   </div>
-                  <div className="form-group col-md-3">
-                    <label>Member number</label>
-                    <input
-                      name="familyMemberNo"
-                      value={this.state.familyMemberNo}
-                      onChange={this.handleChange}
-                      type="text"
-                      className="form-control"
-                    />
-                  </div>
-                  <div className="form-group col-md-3">
-                    <label>Relationship</label>
-                    <input
-                      name="familyMemberRelationship"
-                      value={this.state.familyMemberRelationship}
-                      onChange={this.handleChange}
-                      type="text"
-                      className="form-control"
-                    />
-                  </div>
-                  <div className="form-group col-md-3">
-                    <label>Mobile Number</label>
-                    <input
-                      name="familyMemberPhone"
-                      value={this.state.familyMemberPhone}
-                      onChange={this.handleChange}
-                      type="text"
-                      className="form-control"
-                    />
+                  <div
+                    style={
+                      this.state.familyMember === "New"
+                        ? { display: "none" }
+                        : {}
+                    }
+                  >
+                    <div className="form-group col-md-3">
+                      <label>Member number</label>
+                      <input
+                        name="familyMemberNo"
+                        value={this.state.familyMemberNo}
+                        onChange={this.handleChange}
+                        type="text"
+                        className="form-control"
+                      />
+                    </div>
+                    <div className="form-group col-md-3">
+                      <label>Relationship</label>
+                      <input
+                        name="familyMemberRelationship"
+                        value={this.state.familyMemberRelationship}
+                        onChange={this.handleChange}
+                        type="text"
+                        className="form-control"
+                      />
+                    </div>
+                    <div className="form-group col-md-3">
+                      <label>Mobile Number</label>
+                      <input
+                        name="familyMemberPhone"
+                        value={this.state.familyMemberPhone}
+                        onChange={this.handleChange}
+                        type="text"
+                        className="form-control"
+                      />
+                    </div>
                   </div>
                 </div>
+                <hr />
                 <br />
                 <h3>d. Spiritual Data</h3>
                 <hr />
@@ -580,6 +708,7 @@ class HomePage extends Component {
                     </div>
                   </div>
                 </div>
+                <hr />
                 <br />
                 <h3>e. Home Church</h3>
                 <hr />
@@ -647,6 +776,7 @@ class HomePage extends Component {
                     />
                   </div>
                 </div>
+                <hr />
                 <br />
                 <h3>f. Professional Data</h3>
                 <hr />
@@ -688,7 +818,7 @@ class HomePage extends Component {
                 </div>
 
                 <button onClick={this.handleSubmit} className="btn btn-info">
-                  Save
+                  &nbsp; Save &nbsp;
                 </button>
               </form>
             </div>
