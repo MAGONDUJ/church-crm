@@ -1,5 +1,7 @@
 # misc
 .env
+.cache
+.vscode
 yarn.lock
 
 # dependencies
