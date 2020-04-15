@@ -2,6 +2,7 @@
 .env
 .cache
 .vscode
+.DS_Store
 yarn.lock
 
 # dependencies
