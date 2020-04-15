@@ -24,6 +24,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use("/api/membership", routes.membership);
+app.use("/api/giving", routes.giving);
 
 app.listen(port, async () => {
   console.log(

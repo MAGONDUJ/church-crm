@@ -104,6 +104,18 @@ router.post("/add", async (req, res) => {
     });
   }
 });
+router.get("/members", async (req, res) => {
+  console.log(chalk.yellow("========|Getting Members|======"));
+  let getTxn = await helpers.getMembers();
+  if (getTxn.isSuccessful) {
+    res.status(200).json(getTxn.row);
+  } else {
+    res.json({
+      message: "Failed",
+      details: "Error getting members"
+    });
+  }
+});
 router.get("/families", async (req, res) => {
   console.log(chalk.yellow("========|Getting Families|======"));
   let getTxn = await helpers.getFamilies();

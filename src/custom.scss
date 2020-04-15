@@ -4,6 +4,19 @@ $break-small: 768px;
 $break-large: 1200px;
 // Import Bootstrap and its default variables
 @import "~bootstrap/scss/bootstrap.scss";
+.cnavbar {
+  height: 58px;
+}
+.brandimg {
+  margin-top: 20px;
+  height: 80px;
+  width: 80px;
+  @media screen and (max-width: $break-small) {
+    margin-top: 0px;
+    height: 30px;
+    width: 30px;
+  }
+}
 .padding-0 {
   padding-right: 0;
   padding-left: 0;
@@ -16,7 +29,7 @@ $break-large: 1200px;
   padding-right: 0;
   padding-left: 0;
 }
-h3 {
+h3,h6 {
   color: #6c757d;
 }
 .breadcrumb-item a {
@@ -70,6 +83,17 @@ h3 {
   color: #fff;
   background-color: #6c757d;
   border-bottom: none;
+}
+.menubtn {
+  font-size: 30px;
+  cursor: pointer;
+  margin-left: 20px;
+  margin-top: 20px;
+  color: #fff;
+  position: fixed;
+}
+.menubtn:hover {
+  color: #fff;
 }
 @media screen and (max-height: 450px) {
   .sidenav {

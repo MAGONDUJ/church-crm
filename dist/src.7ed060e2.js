@@ -46431,9 +46431,9 @@ var Navigation = /*#__PURE__*/function (_Component) {
         color: "purple",
         dark: true,
         expand: "md",
-        className: "sticky-top .bg-info"
+        className: "sticky-top .bg-info cnavbar"
       }, _react.default.createElement(_mdbreact.MDBNavbarBrand, null, _react.default.createElement("img", {
-        width: "30",
+        className: "brandimg",
         src: require("../../public/favicon.png")
       })), _react.default.createElement(_mdbreact.MDBNavbarToggler, {
         onClick: this.toggleCollapse
@@ -46585,7 +46585,7 @@ var SideNav = /*#__PURE__*/function (_Component) {
         }, " ", "\xD7"), _react.default.createElement("a", {
           href: "/"
         }, "Membership"), _react.default.createElement("a", {
-          href: "#"
+          href: "/giving"
         }, "Giving"), _react.default.createElement("a", {
           href: "#"
         }, "Clients"), _react.default.createElement("a", {
@@ -46600,20 +46600,14 @@ var SideNav = /*#__PURE__*/function (_Component) {
         }, _react.default.createElement("a", {
           href: "/"
         }, "Membership"), _react.default.createElement("a", {
-          href: "#"
+          href: "/giving"
         }, "Giving"), _react.default.createElement("a", {
           href: "#"
         }, "Clients"), _react.default.createElement("a", {
           href: "#"
         }, "Contact")), _react.default.createElement(_reactRouterDom.NavLink, {
           to: "#",
-          style: {
-            fontSize: 30,
-            cursor: "pointer",
-            marginLeft: "50px",
-            color: "#fff",
-            position: "fixed"
-          },
+          className: "menubtn",
           onClick: this.openNav
         }, "\u2630 Menu"));
       }
@@ -48724,7 +48718,11 @@ var HomePage = /*#__PURE__*/function (_Component) {
         className: "row"
       }, _react.default.createElement("div", {
         className: "col-md-10 offset-md-1"
-      }, _react.default.createElement("form", null, _react.default.createElement("h3", null, "a. Personal Information"), _react.default.createElement("hr", null), _react.default.createElement("div", {
+      }, _react.default.createElement("form", null, _react.default.createElement("div", {
+        className: "card"
+      }, _react.default.createElement("div", {
+        className: "card-body"
+      }, _react.default.createElement("h3", null, "a. Personal Information"), _react.default.createElement("hr", null), _react.default.createElement("div", {
         className: "form-row"
       }, _react.default.createElement("div", {
         className: "form-group col-md-4"
@@ -48881,7 +48879,11 @@ var HomePage = /*#__PURE__*/function (_Component) {
         value: "Widower"
       }, "Widower"), _react.default.createElement("option", {
         value: "Divorced"
-      }, "Divorced")))), _react.default.createElement("hr", null), _react.default.createElement("br", null), _react.default.createElement("h3", null, "b. Contact Information"), _react.default.createElement("hr", null), _react.default.createElement("div", {
+      }, "Divorced")))))), _react.default.createElement("br", null), _react.default.createElement("div", {
+        className: "card"
+      }, _react.default.createElement("div", {
+        className: "card-body"
+      }, _react.default.createElement("h3", null, "b. Contact Information"), _react.default.createElement("hr", null), _react.default.createElement("div", {
         className: "form-row"
       }, _react.default.createElement("div", {
         className: "form-group col-md-4"
@@ -48995,7 +48997,11 @@ var HomePage = /*#__PURE__*/function (_Component) {
           key: "year".concat(index),
           value: year
         }, year);
-      })))), _react.default.createElement("hr", null), _react.default.createElement("br", null), _react.default.createElement("h3", null, "c. Family Members in AIC Milimani"), _react.default.createElement("hr", null), _react.default.createElement("div", {
+      })))))), _react.default.createElement("br", null), _react.default.createElement("div", {
+        className: "card"
+      }, _react.default.createElement("div", {
+        className: "card-body"
+      }, _react.default.createElement("h3", null, "c. Family Members in AIC Milimani"), _react.default.createElement("hr", null), _react.default.createElement("div", {
         className: "form-row"
       }, _react.default.createElement("div", {
         className: "form-group col-md-3"
@@ -49009,7 +49015,8 @@ var HomePage = /*#__PURE__*/function (_Component) {
           key: item.id,
           value: item.familyMember
         }, item.familyMember);
-      }))), _react.default.createElement("div", {
+      })))), _react.default.createElement("div", {
+        className: "form-row",
         style: this.state.familyMember === "New" ? {
           display: "none"
         } : {}
@@ -49037,7 +49044,11 @@ var HomePage = /*#__PURE__*/function (_Component) {
         onChange: this.handleChange,
         type: "text",
         className: "form-control"
-      })))), _react.default.createElement("hr", null), _react.default.createElement("br", null), _react.default.createElement("h3", null, "d. Spiritual Data"), _react.default.createElement("hr", null), _react.default.createElement("div", {
+      }))))), _react.default.createElement("br", null), _react.default.createElement("div", {
+        className: "card"
+      }, _react.default.createElement("div", {
+        className: "card-body"
+      }, _react.default.createElement("h3", null, "d. Spiritual Data"), _react.default.createElement("hr", null), _react.default.createElement("div", {
         className: "form-row"
       }, _react.default.createElement("div", {
         className: "form-group col-md-3"
@@ -49103,7 +49114,11 @@ var HomePage = /*#__PURE__*/function (_Component) {
         checked: this.state.baptizeNature === "Other"
       }), _react.default.createElement("label", {
         className: "form-check-label"
-      }, "Other")))), _react.default.createElement("hr", null), _react.default.createElement("br", null), _react.default.createElement("h3", null, "e. Home Church"), _react.default.createElement("hr", null), _react.default.createElement("div", {
+      }, "Other")))))), _react.default.createElement("br", null), _react.default.createElement("div", {
+        className: "card"
+      }, _react.default.createElement("div", {
+        className: "card-body"
+      }, _react.default.createElement("h3", null, "e. Home Church"), _react.default.createElement("hr", null), _react.default.createElement("div", {
         className: "form-row"
       }, _react.default.createElement("div", {
         className: "form-group col-md-3"
@@ -49155,7 +49170,11 @@ var HomePage = /*#__PURE__*/function (_Component) {
         onChange: this.handleChange,
         type: "text",
         className: "form-control"
-      }))), _react.default.createElement("hr", null), _react.default.createElement("br", null), _react.default.createElement("h3", null, "f. Professional Data"), _react.default.createElement("hr", null), _react.default.createElement("div", {
+      }))))), _react.default.createElement("br", null), _react.default.createElement("div", {
+        className: "card"
+      }, _react.default.createElement("div", {
+        className: "card-body"
+      }, _react.default.createElement("h3", null, "f. Professional Data"), _react.default.createElement("hr", null), _react.default.createElement("div", {
         className: "form-row"
       }, _react.default.createElement("div", {
         className: "form-group col-md-5"
@@ -49198,7 +49217,7 @@ var HomePage = /*#__PURE__*/function (_Component) {
         onChange: this.handleChange,
         type: "text",
         className: "form-control"
-      }))), _react.default.createElement("button", {
+      }))))), _react.default.createElement("br", null), _react.default.createElement("button", {
         onClick: this.handleSubmit,
         className: "btn btn-info"
       }, "\xA0 Save \xA0"))))));
@@ -49209,6 +49228,463 @@ var HomePage = /*#__PURE__*/function (_Component) {
 }(_react.Component);
 
 var _default = HomePage;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","./SideNav":"../src/components/SideNav.jsx","axios":"../node_modules/axios/index.js"}],"../src/components/Giving.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _SideNav = _interopRequireDefault(require("./SideNav"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var axios = require("axios");
+
+var Giving = /*#__PURE__*/function (_Component) {
+  _inherits(Giving, _Component);
+
+  function Giving(props) {
+    var _this;
+
+    _classCallCheck(this, Giving);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Giving).call(this, props));
+
+    _defineProperty(_assertThisInitialized(_this), "handleSearch", /*#__PURE__*/function () {
+      var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(event) {
+        var result;
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                event.preventDefault();
+                result = _this.state.members.filter(function (member) {
+                  return member.memberNo.search(_this.state.search) != -1;
+                });
+
+                if (result[0] != null) {
+                  _this.setState({
+                    fullName: 'Found Member: ' + result[0].firstName + ' ' + result[0].middleName + ' ' + result[0].surName
+                  });
+
+                  _this.setState({
+                    memberNumber: result[0].memberNo
+                  });
+                } else {
+                  result = _this.state.members.filter(function (member) {
+                    return member.firstName.search(_this.state.search) != -1;
+                  });
+
+                  if (result[0] != null) {
+                    _this.setState({
+                      fullName: 'Found Member: ' + result[0].firstName + ' ' + result[0].middleName + ' ' + result[0].surName
+                    });
+
+                    _this.setState({
+                      memberNumber: result[0].memberNo
+                    });
+                  } else {
+                    result = _this.state.members.filter(function (member) {
+                      return member.middleName.search(_this.state.search) != -1;
+                    });
+
+                    if (result[0] != null) {
+                      _this.setState({
+                        fullName: 'Found Member: ' + result[0].firstName + ' ' + result[0].middleName + ' ' + result[0].surName
+                      });
+
+                      _this.setState({
+                        memberNumber: result[0].memberNo
+                      });
+                    } else {
+                      result = _this.state.members.filter(function (member) {
+                        return member.surName.search(_this.state.search) != -1;
+                      });
+
+                      if (result[0] != null) {
+                        _this.setState({
+                          fullName: 'Found Member: ' + result[0].firstName + ' ' + result[0].middleName + ' ' + result[0].surName
+                        });
+
+                        _this.setState({
+                          memberNumber: result[0].memberNo
+                        });
+                      } else {
+                        result = _this.state.members.filter(function (member) {
+                          return member.phoneOne.search(_this.state.search) != -1;
+                        });
+
+                        if (result[0] != null) {
+                          _this.setState({
+                            fullName: 'Found Member: ' + result[0].firstName + ' ' + result[0].middleName + ' ' + result[0].surName
+                          });
+
+                          _this.setState({
+                            memberNumber: result[0].memberNo
+                          });
+                        } else {
+                          _this.setState({
+                            fullName: 'Found Member: None'
+                          });
+                        }
+                      }
+                    }
+                  }
+                }
+
+                console.log('Search Result:', result[0]);
+
+              case 4:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      return function (_x) {
+        return _ref.apply(this, arguments);
+      };
+    }());
+
+    _defineProperty(_assertThisInitialized(_this), "handleSubmit", /*#__PURE__*/function () {
+      var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(event) {
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                event.preventDefault();
+                _context2.next = 3;
+                return axios.post("http://localhost:6800/api/giving/add", _this.state).then(function (response) {
+                  console.log("Backend Response: ", response);
+                });
+
+              case 3:
+                _this.setState({
+                  search: "",
+                  memberNumber: "",
+                  fullName: "",
+                  paymentMode: "Cash",
+                  amount: "",
+                  txRefNo: "",
+                  txDate: "",
+                  purpose: "Offering",
+                  otherPurpose: "",
+                  nonMemberName: "",
+                  nonMemberPhone: "",
+                  nonMemberEmail: "",
+                  postedBy: "Admin"
+                });
+
+              case 4:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }));
+
+      return function (_x2) {
+        return _ref2.apply(this, arguments);
+      };
+    }());
+
+    _this.state = {
+      search: "",
+      memberNumber: "",
+      fullName: "",
+      paymentMode: "Cash",
+      amount: "",
+      txRefNo: "",
+      txDate: "",
+      purpose: "Offering",
+      otherPurpose: "",
+      nonMemberName: "",
+      nonMemberPhone: "",
+      nonMemberEmail: "",
+      postedBy: "Admin",
+      members: []
+    };
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.handleSearch = _this.handleSearch.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(Giving, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      fetch("http://localhost:6800/api/membership/members/").then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        var tmpArray = [];
+
+        for (var i = 0; i < data.length; i++) {
+          tmpArray.push({
+            id: i + 1,
+            memberNo: data[i].memberNo,
+            firstName: data[i].firstName,
+            middleName: data[i].middleName,
+            surName: data[i].surName,
+            phoneOne: data[i].phoneOne
+          });
+        } //console.log(tmpArray);
+
+
+        _this2.setState({
+          members: tmpArray
+        });
+      });
+    }
+  }, {
+    key: "handleChange",
+    value: function handleChange(event) {
+      //console.log(event.target.name, event.target.value);
+      this.setState(_defineProperty({}, event.target.name, event.target.value));
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      return _react.default.createElement("div", {
+        className: "row"
+      }, _react.default.createElement("div", {
+        className: "col-md-2 bg-secondary padding-right-0"
+      }, _react.default.createElement(_SideNav.default, null)), _react.default.createElement("div", {
+        className: "col-md-10 padding-0"
+      }, _react.default.createElement("div", {
+        className: "row"
+      }, _react.default.createElement("div", {
+        className: "col-md-12 col"
+      }, _react.default.createElement("nav", {
+        "aria-label": "breadcrumb"
+      }, _react.default.createElement("ol", {
+        className: "breadcrumb"
+      }, _react.default.createElement("li", {
+        className: "breadcrumb-item"
+      }, _react.default.createElement("a", {
+        href: "#"
+      }, "Home")), _react.default.createElement("li", {
+        className: "breadcrumb-item"
+      }, _react.default.createElement("a", {
+        href: "#"
+      }, "Giving")), _react.default.createElement("li", {
+        className: "breadcrumb-item active",
+        "aria-current": "page"
+      }, "New"))))), _react.default.createElement("div", {
+        className: "row"
+      }, _react.default.createElement("div", {
+        className: "col-md-10 offset-md-1"
+      }, _react.default.createElement("form", null, _react.default.createElement("div", {
+        className: "card"
+      }, _react.default.createElement("div", {
+        className: "card-body"
+      }, _react.default.createElement("div", {
+        className: "form-row"
+      }, _react.default.createElement("div", {
+        className: "form-group col-md-5"
+      }, _react.default.createElement("label", null, "Search by:"), _react.default.createElement("div", {
+        className: "input-group mb-3"
+      }, _react.default.createElement("input", {
+        name: "search",
+        value: this.state.search,
+        onChange: this.handleChange,
+        onKeyPress: function onKeyPress(e) {
+          e.key === 'Enter' ? _this3.handleSearch(e) : null;
+        },
+        type: "text",
+        className: "form-control",
+        placeholder: "Member Number/Name/Mobile",
+        autoComplete: "search"
+      }), _react.default.createElement("div", {
+        className: "input-group-append"
+      }, _react.default.createElement("span", {
+        className: "input-group-text"
+      }, "\u21B5"))), _react.default.createElement("small", {
+        className: "form-text text-warning"
+      }, this.state.fullName)), _react.default.createElement("div", {
+        className: "form-group col-md-4"
+      }, _react.default.createElement("label", null, "Payment Mode:"), _react.default.createElement("select", {
+        className: "form-control",
+        name: "paymentMode",
+        value: this.state.paymentMode,
+        onChange: this.handleChange
+      }, _react.default.createElement("option", {
+        value: "Cash"
+      }, "Cash"), _react.default.createElement("option", {
+        value: "Mpesa"
+      }, "Mpesa"), _react.default.createElement("option", {
+        value: "Cheque"
+      }, "Cheque"), _react.default.createElement("option", {
+        value: "Bank Transfer/Deposit"
+      }, "Bank Transfer/Deposit"), _react.default.createElement("option", {
+        value: "Cheque"
+      }, "Other"))), _react.default.createElement("div", {
+        className: "form-group col-md-3"
+      }, _react.default.createElement("label", null, "Amount:"), _react.default.createElement("input", {
+        name: "amount",
+        value: this.state.amount,
+        onChange: this.handleChange,
+        type: "text",
+        className: "form-control"
+      }))), _react.default.createElement("div", {
+        className: "form-row"
+      }, _react.default.createElement("div", {
+        className: "form-group col-md-4"
+      }, _react.default.createElement("label", null, "Transaction RefNo:"), _react.default.createElement("input", {
+        name: "txRefNo",
+        value: this.state.txRefNo,
+        onChange: this.handleChange,
+        type: "text",
+        className: "form-control"
+      })), _react.default.createElement("div", {
+        className: "form-group col-md-3"
+      }, _react.default.createElement("label", null, "Transaction Date:"), _react.default.createElement("input", {
+        name: "txDate",
+        value: this.state.txDate == "" ? "" : this.state.txDate,
+        onChange: this.handleChange,
+        type: "date",
+        className: "form-control"
+      }))), _react.default.createElement("div", {
+        className: "form-row"
+      }, _react.default.createElement("div", {
+        className: "form-group col-md-4"
+      }, _react.default.createElement("label", null, "Purpose:"), _react.default.createElement("div", {
+        className: "form-check"
+      }, _react.default.createElement("input", {
+        className: "form-check-input",
+        type: "radio",
+        name: "purpose",
+        onChange: this.handleChange,
+        value: "Offering",
+        checked: this.state.purpose === "Offering"
+      }), _react.default.createElement("label", {
+        className: "form-check-label"
+      }, "Offering")), _react.default.createElement("div", {
+        className: "form-check form-check-inline"
+      }, _react.default.createElement("input", {
+        className: "form-check-input",
+        type: "radio",
+        name: "purpose",
+        onChange: this.handleChange,
+        value: "Tithe",
+        checked: this.state.purpose === "Tithe"
+      }), _react.default.createElement("label", {
+        className: "form-check-label"
+      }, "Tithe")), _react.default.createElement("div", {
+        className: "form-check form-check-inline"
+      }, _react.default.createElement("input", {
+        className: "form-check-input",
+        type: "radio",
+        name: "purpose",
+        onChange: this.handleChange,
+        value: "Ministry Event",
+        checked: this.state.purpose === "Ministry Event"
+      }), _react.default.createElement("label", {
+        className: "form-check-label"
+      }, "Ministry Event")), _react.default.createElement("div", {
+        className: "form-check form-check-inline"
+      }, _react.default.createElement("input", {
+        className: "form-check-input",
+        type: "radio",
+        name: "purpose",
+        onChange: this.handleChange,
+        value: "Other",
+        checked: this.state.purpose === "Other"
+      }), _react.default.createElement("label", {
+        className: "form-check-label"
+      }, "Other"))), _react.default.createElement("div", {
+        className: "form-group col-md-4",
+        style: this.state.purpose === "Other" ? {} : {
+          display: "none"
+        }
+      }, _react.default.createElement("label", null, "Other Details/Description:"), _react.default.createElement("textarea", {
+        className: "form-control",
+        name: "otherPurpose",
+        rows: "3",
+        value: this.state.otherPurpose,
+        onChange: this.handleChange
+      }))))), _react.default.createElement("br", null), _react.default.createElement("div", {
+        className: "card"
+      }, _react.default.createElement("div", {
+        className: "card-body"
+      }, _react.default.createElement("h6", null, "Non Member"), _react.default.createElement("hr", null), _react.default.createElement("div", {
+        className: "form-row"
+      }, _react.default.createElement("div", {
+        className: "form-group col-md-4"
+      }, _react.default.createElement("label", null, "Name:"), _react.default.createElement("input", {
+        name: "nonMemberName",
+        value: this.state.nonMemberName,
+        onChange: this.handleChange,
+        type: "text",
+        className: "form-control"
+      })), _react.default.createElement("div", {
+        className: "form-group col-md-4"
+      }, _react.default.createElement("label", null, "Mobile Number:"), _react.default.createElement("input", {
+        name: "nonMemberPhone",
+        value: this.state.nonMemberPhone,
+        onChange: this.handleChange,
+        type: "text",
+        className: "form-control"
+      })), _react.default.createElement("div", {
+        className: "form-group col-md-4"
+      }, _react.default.createElement("label", null, "Email:"), _react.default.createElement("input", {
+        name: "nonMemberEmail",
+        value: this.state.nonMemberEmail,
+        onChange: this.handleChange,
+        type: "text",
+        className: "form-control"
+      }))), _react.default.createElement("div", {
+        className: "form-row"
+      }, _react.default.createElement("div", {
+        className: "form-group col-md-4"
+      }, _react.default.createElement("label", null, "Posted by: ", this.state.postedBy))))), _react.default.createElement("br", null), _react.default.createElement("button", {
+        onClick: this.handleSubmit,
+        className: "btn btn-info"
+      }, "\xA0 Save \xA0"))))));
+    }
+  }]);
+
+  return Giving;
+}(_react.Component);
+
+var _default = Giving;
 exports.default = _default;
 },{"react":"../node_modules/react/index.js","./SideNav":"../src/components/SideNav.jsx","axios":"../node_modules/axios/index.js"}],"../src/components/App.jsx":[function(require,module,exports) {
 "use strict";
@@ -49227,6 +49703,8 @@ var _history = require("history");
 var _Navigation = _interopRequireDefault(require("./Navigation"));
 
 var _HomePage = _interopRequireDefault(require("./HomePage"));
+
+var _Giving = _interopRequireDefault(require("./Giving"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -49269,17 +49747,13 @@ var App = /*#__PURE__*/function (_Component) {
     value: function render() {
       return _react.default.createElement(_reactRouterDom.Router, {
         history: history
-      }, _react.default.createElement(_reactRouterDom.Switch, null, _react.default.createElement(_reactRouterDom.Route, {
-        exact: true,
+      }, _react.default.createElement(_Navigation.default, null), _react.default.createElement(_reactRouterDom.Switch, null, _react.default.createElement(_reactRouterDom.Route, {
         path: "/",
-        render: function render() {
-          return _react.default.createElement("div", null, _react.default.createElement(_Navigation.default, null), _react.default.createElement(_HomePage.default, null));
-        }
+        exact: true,
+        component: _HomePage.default
       }), _react.default.createElement(_reactRouterDom.Route, {
-        path: "/membership",
-        render: function render() {
-          return _react.default.createElement("div", null, _react.default.createElement("h3", null, "All to do with membership"));
-        }
+        path: "/giving",
+        component: _Giving.default
       })));
     }
   }]);
@@ -49289,7 +49763,7 @@ var App = /*#__PURE__*/function (_Component) {
 
 var _default = App;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","history":"../node_modules/history/esm/history.js","./Navigation":"../src/components/Navigation.jsx","./HomePage":"../src/components/HomePage.jsx"}],"../node_modules/core-js/modules/_global.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","history":"../node_modules/history/esm/history.js","./Navigation":"../src/components/Navigation.jsx","./HomePage":"../src/components/HomePage.jsx","./Giving":"../src/components/Giving.jsx"}],"../node_modules/core-js/modules/_global.js":[function(require,module,exports) {
 
 // https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
 var global = module.exports = typeof window != 'undefined' && window.Math == Math
@@ -57428,7 +57902,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53888" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49581" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

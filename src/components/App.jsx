@@ -5,34 +5,17 @@ const history = createBrowserHistory();
 
 import Navigation from "./Navigation";
 import HomePage from "./HomePage";
+import Giving from "./Giving";
 // @flow
 
 class App extends Component {
   render() {
     return (
       <Router history={history}>
+        <Navigation />
         <Switch>
-          <Route
-            exact
-            path="/"
-            render={() => (
-              <div>
-                {/* component here */}
-                {/* <h3>A special thank to Jesus and God</h3> */}
-                <Navigation />
-                <HomePage />
-              </div>
-            )}
-          />
-          <Route
-            path="/membership"
-            render={() => (
-              <div>
-                {/* component here */}
-                <h3>All to do with membership</h3>
-              </div>
-            )}
-          />
+          <Route path="/" exact component={HomePage} />
+          <Route path="/giving" component={Giving} />
         </Switch>
       </Router>
     );

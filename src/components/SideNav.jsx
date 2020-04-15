@@ -30,7 +30,7 @@ class SideNav extends Component {
               &times;
             </NavLink>
             <a href="/">Membership</a>
-            <a href="#">Giving</a>
+            <a href="/giving">Giving</a>
             <a href="#">Clients</a>
             <a href="#">Contact</a>
           </div>
@@ -41,21 +41,11 @@ class SideNav extends Component {
         <div>
           <div className="sidenav" style={{ width: "0" }}>
             <a href="/">Membership</a>
-            <a href="#">Giving</a>
+            <a href="/giving">Giving</a>
             <a href="#">Clients</a>
             <a href="#">Contact</a>
           </div>
-          <NavLink
-            to="#"
-            style={{
-              fontSize: 30,
-              cursor: "pointer",
-              marginLeft: "50px",
-              color: "#fff",
-              position: "fixed"
-            }}
-            onClick={this.openNav}
-          >
+          <NavLink to="#" className="menubtn" onClick={this.openNav}>
             &#9776; Menu
           </NavLink>
         </div>

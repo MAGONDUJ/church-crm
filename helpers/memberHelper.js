@@ -23,8 +23,8 @@ newMember = async params => {
     }
   );
   const newMember = new Member(params);
-  await Member.init().then(() => {
-    newMember.save().then(results => {
+  await Member.init().then(async () => {
+    await newMember.save().then(results => {
       if (results) {
         isSuccessful = true;
       }
@@ -32,7 +32,20 @@ newMember = async params => {
   });
   return isSuccessful;
 };
-
+getMembers = async () => {
+  let isSuccessful = false;
+  let row = {};
+  await Member.find().then(async record => {
+    if (record) {
+      row = record;
+      isSuccessful = true;
+    }
+  });
+  return {
+    isSuccessful,
+    row
+  };
+};
 getFamilies = async () => {
   let isSuccessful = false;
   let row = {};
@@ -50,5 +63,6 @@ getFamilies = async () => {
 
 module.exports = {
   newMember,
-  getFamilies
+  getFamilies,
+  getMembers
 };

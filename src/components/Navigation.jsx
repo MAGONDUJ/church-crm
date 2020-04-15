@@ -31,10 +31,13 @@ class Navigation extends Component {
           color="purple"
           dark
           expand="md"
-          className="sticky-top .bg-info"
+          className="sticky-top .bg-info cnavbar"
         >
           <MDBNavbarBrand>
-            <img width="30" src={require("../../public/favicon.png")} />
+            <img
+              className="brandimg"
+              src={require("../../public/favicon.png")}
+            />
           </MDBNavbarBrand>
           <MDBNavbarToggler onClick={this.toggleCollapse} />
           <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
