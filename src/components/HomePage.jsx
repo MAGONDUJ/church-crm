@@ -45,7 +45,7 @@ class HomePage extends Component {
       churchPastorContact: "",
       professionalData: "",
       professionalDataOS: "",
-      families: []
+      families: [],
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -59,26 +59,26 @@ class HomePage extends Component {
   }
   componentDidMount() {
     fetch("http://localhost:6800/api/membership/families/")
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         let tmpArray = [];
         tmpArray.push({
           id: 1,
           familyMember: "New",
           familyMemberNo: "",
-          familyMemberPhone: ""
+          familyMemberPhone: "",
         });
         for (var i = 0; i < data.length; i++) {
           tmpArray.push({
             id: i + 2,
             familyMember: data[i].familyMember,
             familyMemberNo: data[i].familyMemberNo,
-            familyMemberPhone: data[i].familyMemberPhone
+            familyMemberPhone: data[i].familyMemberPhone,
           });
         }
         //console.log(tmpArray);
         this.setState({
-          families: tmpArray
+          families: tmpArray,
         });
       });
   }
@@ -91,7 +91,7 @@ class HomePage extends Component {
           console.log(this.state.families[i]);
           this.setState({
             familyMemberNo: this.state.families[i].familyMemberNo,
-            familyMemberPhone: this.state.families[i].familyMemberPhone
+            familyMemberPhone: this.state.families[i].familyMemberPhone,
           });
         }
       }
@@ -103,13 +103,13 @@ class HomePage extends Component {
       reader.onloadend = () => {
         this.setState({
           file: file,
-          imagePreviewUrl: reader.result
+          imagePreviewUrl: reader.result,
         });
       };
       reader.readAsDataURL(file);
     }
   }
-  handleSubmit = async event => {
+  handleSubmit = async (event) => {
     event.preventDefault();
     // TODO: do something with -> this.state.file
     //console.log("handle uploading-", this.state.file);
@@ -118,12 +118,12 @@ class HomePage extends Component {
     let imgPath = "";
     await axios
       .post("http://localhost:6800/api/membership/upload", formData)
-      .then(response => {
+      .then((response) => {
         //console.log(response.data.profileImg);
         imgPath = response.data.profileImg;
         console.log("The file is successfully uploaded");
       })
-      .catch(error => { });
+      .catch((error) => {});
     let params = {
       profileImg: imgPath,
       title: this.state.title,
@@ -162,55 +162,15 @@ class HomePage extends Component {
       churchPastor: this.state.churchPastor,
       churchPastorContact: this.state.churchPastorContact,
       professionalData: this.state.professionalData,
-      professionalDataOS: this.state.professionalDataOS
+      professionalDataOS: this.state.professionalDataOS,
     };
     await axios
       .post("http://localhost:6800/api/membership/add", params)
-      .then(response => {
-        console.log("Backend Response: ", response);
+      .then((response) => {
+        console.log("Backend Response: ", response.data);
+        window.alert(response.data.details);
       });
-    this.setState({
-      file: "",
-      imagePreviewUrl: "",
-      title: "",
-      firstName: "",
-      middleName: "",
-      surName: "",
-      idNumber: "",
-      gender: "",
-      dob: "",
-      maritalStatus: "",
-      maritalStatusDesc: "",
-      phoneOne: "",
-      phoneTwo: "",
-      email: "",
-      box: "",
-      city: "",
-      code: "",
-      residenceCity: "",
-      geographicalArea: "",
-      estate: "",
-      road: "",
-      houseNo: "",
-      joinYear: "",
-      familyMember: "New",
-      familyMemberNo: "",
-      familyMemberRelationship: "",
-      familyMemberPhone: "",
-      baptized: "",
-      baptizeDate: "",
-      baptizePlace: "",
-      baptizeNature: "",
-      homeChurch: "",
-      churchCounty: "",
-      churchLocation: "",
-      churchLandMark: "",
-      churchPastor: "",
-      churchPastorContact: "",
-      professionalData: "",
-      professionalDataOS: "",
-      families: []
-    });
+    window.location.reload(false);
   };
   render() {
     let { imagePreviewUrl } = this.state;
@@ -408,16 +368,16 @@ class HomePage extends Component {
                         >
                           <option value="Married in Church">
                             Married in Church
-                      </option>
+                          </option>
                           <option value="Customary Marriage">
                             Customary Marriage
-                      </option>
+                          </option>
                           <option value="Married at Registrar Office">
                             Married at Registrar Office
-                      </option>
+                          </option>
                           <option value="Planning to Solemnize">
                             Planning to Solemnize
-                      </option>
+                          </option>
                           <option value="Widow">Widow</option>
                           <option value="Widower">Widower</option>
                           <option value="Divorced">Divorced</option>
@@ -587,7 +547,7 @@ class HomePage extends Component {
                           value={this.state.familyMember}
                           onChange={this.handleChange}
                         >
-                          {this.state.families.map(item => {
+                          {this.state.families.map((item) => {
                             return (
                               <option key={item.id} value={item.familyMember}>
                                 {item.familyMember}
@@ -597,7 +557,8 @@ class HomePage extends Component {
                         </select>
                       </div>
                     </div>
-                    <div className="form-row"
+                    <div
+                      className="form-row"
                       style={
                         this.state.familyMember === "New"
                           ? { display: "none" }
@@ -798,7 +759,9 @@ class HomePage extends Component {
                     <hr />
                     <div className="form-row">
                       <div className="form-group col-md-5">
-                        <label>What is your area of specialization/training</label>
+                        <label>
+                          What is your area of specialization/training
+                        </label>
                         <select
                           className="form-control"
                           name="professionalData"
@@ -837,7 +800,6 @@ class HomePage extends Component {
                 <button onClick={this.handleSubmit} className="btn btn-info">
                   &nbsp; Save &nbsp;
                 </button>
-
               </form>
             </div>
           </div>

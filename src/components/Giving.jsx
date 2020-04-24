@@ -19,8 +19,7 @@ class Giving extends Component {
       nonMemberPhone: "",
       nonMemberEmail: "",
       postedBy: "Admin",
-      members: []
-
+      members: [],
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -28,8 +27,8 @@ class Giving extends Component {
   }
   componentDidMount() {
     fetch("http://localhost:6800/api/membership/members/")
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         let tmpArray = [];
         for (var i = 0; i < data.length; i++) {
           tmpArray.push({
@@ -38,88 +37,114 @@ class Giving extends Component {
             firstName: data[i].firstName,
             middleName: data[i].middleName,
             surName: data[i].surName,
-            phoneOne: data[i].phoneOne
+            phoneOne: data[i].phoneOne,
           });
         }
         //console.log(tmpArray);
         this.setState({
-          members: tmpArray
+          members: tmpArray,
         });
       });
   }
   handleChange(event) {
     //console.log(event.target.name, event.target.value);
     this.setState({ [event.target.name]: event.target.value });
-
   }
-  handleSearch = async event => {
+  handleSearch = async (event) => {
     event.preventDefault();
     let result = this.state.members.filter((member) => {
       return member.memberNo.search(this.state.search) != -1;
     });
     if (result[0] != null) {
-      this.setState({ fullName: 'Found Member: ' + result[0].firstName + ' ' + result[0].middleName + ' ' + result[0].surName });
+      this.setState({
+        fullName:
+          "Found Member: " +
+          result[0].firstName +
+          " " +
+          result[0].middleName +
+          " " +
+          result[0].surName,
+      });
       this.setState({ memberNumber: result[0].memberNo });
     } else {
       result = this.state.members.filter((member) => {
         return member.firstName.search(this.state.search) != -1;
       });
       if (result[0] != null) {
-        this.setState({ fullName: 'Found Member: ' + result[0].firstName + ' ' + result[0].middleName + ' ' + result[0].surName });
+        this.setState({
+          fullName:
+            "Found Member: " +
+            result[0].firstName +
+            " " +
+            result[0].middleName +
+            " " +
+            result[0].surName,
+        });
         this.setState({ memberNumber: result[0].memberNo });
       } else {
         result = this.state.members.filter((member) => {
           return member.middleName.search(this.state.search) != -1;
         });
         if (result[0] != null) {
-          this.setState({ fullName: 'Found Member: ' + result[0].firstName + ' ' + result[0].middleName + ' ' + result[0].surName });
+          this.setState({
+            fullName:
+              "Found Member: " +
+              result[0].firstName +
+              " " +
+              result[0].middleName +
+              " " +
+              result[0].surName,
+          });
           this.setState({ memberNumber: result[0].memberNo });
         } else {
           result = this.state.members.filter((member) => {
             return member.surName.search(this.state.search) != -1;
           });
           if (result[0] != null) {
-            this.setState({ fullName: 'Found Member: ' + result[0].firstName + ' ' + result[0].middleName + ' ' + result[0].surName });
+            this.setState({
+              fullName:
+                "Found Member: " +
+                result[0].firstName +
+                " " +
+                result[0].middleName +
+                " " +
+                result[0].surName,
+            });
             this.setState({ memberNumber: result[0].memberNo });
           } else {
             result = this.state.members.filter((member) => {
               return member.phoneOne.search(this.state.search) != -1;
             });
             if (result[0] != null) {
-              this.setState({ fullName: 'Found Member: ' + result[0].firstName + ' ' + result[0].middleName + ' ' + result[0].surName });
+              this.setState({
+                fullName:
+                  "Found Member: " +
+                  result[0].firstName +
+                  " " +
+                  result[0].middleName +
+                  " " +
+                  result[0].surName,
+              });
               this.setState({ memberNumber: result[0].memberNo });
             } else {
-              this.setState({ fullName: 'Found Member: None' });
+              this.setState({ fullName: "Found Member: None" });
             }
           }
         }
       }
     }
-    console.log('Search Result:', result[0]);
-  }
-  handleSubmit = async event => {
+    console.log("Search Result:", result[0]);
+  };
+  handleSubmit = async (event) => {
     event.preventDefault();
     await axios
       .post("http://localhost:6800/api/giving/add", this.state)
-      .then(response => {
-        console.log("Backend Response: ", response);
+      .then((response) => {
+        console.log("Backend Response: ", response.data);
+        window.alert(response.data.details);
       });
-    this.setState({
-      search: "",
-      memberNumber: "",
-      fullName: "",
-      paymentMode: "Cash",
-      amount: "",
-      txRefNo: "",
-      txDate: "",
-      purpose: "Offering",
-      otherPurpose: "",
-      nonMemberName: "",
-      nonMemberPhone: "",
-      nonMemberEmail: "",
-      postedBy: "Admin"
-    });
-  }
+    window.location.reload(false);
+  };
   render() {
     return (
       <div className="row">
@@ -158,7 +183,9 @@ class Giving extends Component {
                             name="search"
                             value={this.state.search}
                             onChange={this.handleChange}
-                            onKeyPress={(e) => { (e.key === 'Enter' ? this.handleSearch(e) : null) }}
+                            onKeyPress={(e) => {
+                              e.key === "Enter" ? this.handleSearch(e) : null;
+                            }}
                             type="text"
                             className="form-control"
                             placeholder="Member Number/Name/Mobile"
@@ -168,7 +195,9 @@ class Giving extends Component {
                             <span className="input-group-text">&crarr;</span>
                           </div>
                         </div>
-                        <small className="form-text text-warning">{this.state.fullName}</small>
+                        <small className="form-text text-warning">
+                          {this.state.fullName}
+                        </small>
                       </div>
                       <div className="form-group col-md-4">
                         <label>Payment Mode:</label>
@@ -181,7 +210,9 @@ class Giving extends Component {
                           <option value="Cash">Cash</option>
                           <option value="Mpesa">Mpesa</option>
                           <option value="Cheque">Cheque</option>
-                          <option value="Bank Transfer/Deposit">Bank Transfer/Deposit</option>
+                          <option value="Bank Transfer/Deposit">
+                            Bank Transfer/Deposit
+                          </option>
                           <option value="Cheque">Other</option>
                         </select>
                       </div>
@@ -212,9 +243,7 @@ class Giving extends Component {
                         <input
                           name="txDate"
                           value={
-                            this.state.txDate == ""
-                              ? ""
-                              : this.state.txDate
+                            this.state.txDate == "" ? "" : this.state.txDate
                           }
                           onChange={this.handleChange}
                           type="date"
@@ -256,7 +285,9 @@ class Giving extends Component {
                             value="Ministry Event"
                             checked={this.state.purpose === "Ministry Event"}
                           />
-                          <label className="form-check-label">Ministry Event</label>
+                          <label className="form-check-label">
+                            Ministry Event
+                          </label>
                         </div>
                         <div className="form-check form-check-inline">
                           <input
@@ -279,8 +310,13 @@ class Giving extends Component {
                         }
                       >
                         <label>Other Details/Description:</label>
-                        <textarea className="form-control" name="otherPurpose" rows="3" value={this.state.otherPurpose}
-                          onChange={this.handleChange} />
+                        <textarea
+                          className="form-control"
+                          name="otherPurpose"
+                          rows="3"
+                          value={this.state.otherPurpose}
+                          onChange={this.handleChange}
+                        />
                       </div>
                     </div>
                   </div>
@@ -337,7 +373,7 @@ class Giving extends Component {
             </div>
           </div>
         </div>
-      </div >
+      </div>
     );
   }
 }
