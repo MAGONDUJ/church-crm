@@ -1,22 +1,23 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
+import { MDBIcon } from "mdbreact";
 
 class SideNav extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      navState: 0
+      navState: 0,
     };
     this.openNav = this.openNav.bind(this);
     this.closeNav = this.closeNav.bind(this);
   }
 
-  openNav = async event => {
+  openNav = async (event) => {
     event.preventDefault();
     this.setState({ navState: 0 });
   };
 
-  closeNav = async event => {
+  closeNav = async (event) => {
     event.preventDefault();
     this.setState({ navState: 1 });
   };
@@ -29,26 +30,22 @@ class SideNav extends Component {
               {" "}
               &times;
             </NavLink>
-            <a href="/">Membership</a>
-            <a href="/giving">Giving</a>
-            <a href="#">Reports</a>
-            <a href="#">Contact</a>
+            <a href="/member">
+              <MDBIcon icon="address-book" />
+              &nbsp;Membership
+            </a>
+            <a href="/giving">
+              <MDBIcon icon="donate" />
+              &nbsp;Giving
+            </a>
           </div>
         </div>
       );
     } else {
       return (
-        <div>
-          <div className="sidenav" style={{ width: "0" }}>
-            <a href="/">Membership</a>
-            <a href="/giving">Giving</a>
-            <a href="#">Reports</a>
-            <a href="#">Contact</a>
-          </div>
-          <NavLink to="#" className="menubtn" onClick={this.openNav}>
-            &#9776; Menu
-          </NavLink>
-        </div>
+        <NavLink to="#" className="menubtn" onClick={this.openNav}>
+          &#9776; Menu
+        </NavLink>
       );
     }
   }

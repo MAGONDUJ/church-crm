@@ -1,4 +1,17 @@
 import React, { Component } from "react";
+import {
+  MDBBtn,
+  MDBCard,
+  MDBCardBody,
+  MDBCardImage,
+  MDBCardTitle,
+  MDBCardText,
+  MDBRow,
+  MDBCol,
+  MDBIcon,
+} from "mdbreact";
+import Moment from "react-moment";
+import Navigation from "./Navigation";
 import SideNav from "./SideNav";
 const axios = require("axios");
 
@@ -147,229 +160,237 @@ class Giving extends Component {
   };
   render() {
     return (
-      <div className="row">
-        <div className="col-md-2 bg-secondary padding-right-0">
-          <SideNav />
-        </div>
-        <div className="col-md-10 padding-0">
+      <div>
+        <Navigation />
+        <div className="container-fluid">
           <div className="row">
-            <div className="col-md-12 col">
-              <nav aria-label="breadcrumb">
-                <ol className="breadcrumb">
-                  <li className="breadcrumb-item">
-                    <a href="#">Home</a>
-                  </li>
-                  <li className="breadcrumb-item">
-                    <a href="#">Giving</a>
-                  </li>
-                  <li className="breadcrumb-item active" aria-current="page">
-                    New
-                  </li>
-                </ol>
-              </nav>
+            <div className="col-md-2">
+              <SideNav />
             </div>
-          </div>
-
-          <div className="row">
-            <div className="col-md-10 offset-md-1">
-              <form>
-                <div className="card">
-                  <div className="card-body">
-                    <div className="form-row">
-                      <div className="form-group col-md-5">
-                        <label>Search by:</label>
-                        <div className="input-group mb-3">
-                          <input
-                            name="search"
-                            value={this.state.search}
-                            onChange={this.handleChange}
-                            onKeyPress={(e) => {
-                              e.key === "Enter" ? this.handleSearch(e) : null;
-                            }}
-                            type="text"
-                            className="form-control"
-                            placeholder="Member Number/Name/Mobile"
-                            autoComplete="search"
-                          />
-                          <div className="input-group-append">
-                            <span className="input-group-text">&crarr;</span>
+            <div className="col-md-10">
+              <br />
+              <div className="row">
+                <div className="col-md-12">
+                  <form>
+                    <MDBCard wide>
+                      <MDBCardImage
+                        className="view view-cascade gradient-card-header peach-gradient text-center text-white"
+                        cascade
+                        tag="div"
+                      >
+                        <br />
+                        <h2 className="h2-responsive mb-2">Giving</h2>
+                        <p>
+                          <MDBIcon icon="calendar-alt" />
+                          &nbsp;
+                          <Moment format="DD.MM.YYYY">{new Date()}</Moment>
+                        </p>
+                      </MDBCardImage>
+                      <MDBCardBody cascade>
+                        <div className="form-row">
+                          <div className="form-group col-md-5">
+                            <label>Search by:</label>
+                            <div className="input-group mb-3">
+                              <input
+                                name="search"
+                                value={this.state.search}
+                                onChange={this.handleChange}
+                                onKeyPress={(e) => {
+                                  e.key === "Enter"
+                                    ? this.handleSearch(e)
+                                    : null;
+                                }}
+                                type="text"
+                                className="form-control"
+                                placeholder="Member Number/Name/Mobile"
+                                autoComplete="search"
+                              />
+                              <div className="input-group-append">
+                                <span className="input-group-text">
+                                  &crarr;
+                                </span>
+                              </div>
+                            </div>
+                            <small className="form-text text-warning">
+                              {this.state.fullName}
+                            </small>
+                          </div>
+                          <div className="form-group col-md-4">
+                            <label>Payment Mode:</label>
+                            <select
+                              className="form-control"
+                              name="paymentMode"
+                              value={this.state.paymentMode}
+                              onChange={this.handleChange}
+                            >
+                              <option value="Cash">Cash</option>
+                              <option value="Mpesa">Mpesa</option>
+                              <option value="Cheque">Cheque</option>
+                              <option value="Bank Transfer/Deposit">
+                                Bank Transfer/Deposit
+                              </option>
+                              <option value="Cheque">Other</option>
+                            </select>
+                          </div>
+                          <div className="form-group col-md-3">
+                            <label>Amount:</label>
+                            <input
+                              name="amount"
+                              value={this.state.amount}
+                              onChange={this.handleChange}
+                              type="text"
+                              className="form-control"
+                            />
                           </div>
                         </div>
-                        <small className="form-text text-warning">
-                          {this.state.fullName}
-                        </small>
-                      </div>
-                      <div className="form-group col-md-4">
-                        <label>Payment Mode:</label>
-                        <select
-                          className="form-control"
-                          name="paymentMode"
-                          value={this.state.paymentMode}
-                          onChange={this.handleChange}
-                        >
-                          <option value="Cash">Cash</option>
-                          <option value="Mpesa">Mpesa</option>
-                          <option value="Cheque">Cheque</option>
-                          <option value="Bank Transfer/Deposit">
-                            Bank Transfer/Deposit
-                          </option>
-                          <option value="Cheque">Other</option>
-                        </select>
-                      </div>
-                      <div className="form-group col-md-3">
-                        <label>Amount:</label>
-                        <input
-                          name="amount"
-                          value={this.state.amount}
-                          onChange={this.handleChange}
-                          type="text"
-                          className="form-control"
-                        />
-                      </div>
-                    </div>
-                    <div className="form-row">
-                      <div className="form-group col-md-4">
-                        <label>Transaction RefNo:</label>
-                        <input
-                          name="txRefNo"
-                          value={this.state.txRefNo}
-                          onChange={this.handleChange}
-                          type="text"
-                          className="form-control"
-                        />
-                      </div>
-                      <div className="form-group col-md-3">
-                        <label>Transaction Date:</label>
-                        <input
-                          name="txDate"
-                          value={
-                            this.state.txDate == "" ? "" : this.state.txDate
-                          }
-                          onChange={this.handleChange}
-                          type="date"
-                          className="form-control"
-                        />
-                      </div>
-                    </div>
-                    <div className="form-row">
-                      <div className="form-group col-md-4">
-                        <label>Purpose:</label>
-                        <div className="form-check">
-                          <input
-                            className="form-check-input"
-                            type="radio"
-                            name="purpose"
-                            onChange={this.handleChange}
-                            value="Offering"
-                            checked={this.state.purpose === "Offering"}
-                          />
-                          <label className="form-check-label">Offering</label>
+                        <div className="form-row">
+                          <div className="form-group col-md-4">
+                            <label>Transaction RefNo:</label>
+                            <input
+                              name="txRefNo"
+                              value={this.state.txRefNo}
+                              onChange={this.handleChange}
+                              type="text"
+                              className="form-control"
+                            />
+                          </div>
+                          <div className="form-group col-md-3">
+                            <label>Transaction Date:</label>
+                            <input
+                              name="txDate"
+                              value={
+                                this.state.txDate == "" ? "" : this.state.txDate
+                              }
+                              onChange={this.handleChange}
+                              type="date"
+                              className="form-control"
+                            />
+                          </div>
                         </div>
-                        <div className="form-check form-check-inline">
-                          <input
-                            className="form-check-input"
-                            type="radio"
-                            name="purpose"
-                            onChange={this.handleChange}
-                            value="Tithe"
-                            checked={this.state.purpose === "Tithe"}
-                          />
-                          <label className="form-check-label">Tithe</label>
+                        <div className="form-row">
+                          <div className="form-group col-md-4">
+                            <label>Purpose:</label>
+                            <div className="form-check">
+                              <input
+                                className="form-check-input"
+                                type="radio"
+                                name="purpose"
+                                onChange={this.handleChange}
+                                value="Offering"
+                                checked={this.state.purpose === "Offering"}
+                              />
+                              <label className="form-check-label">
+                                Offering
+                              </label>
+                            </div>
+                            <div className="form-check form-check-inline">
+                              <input
+                                className="form-check-input"
+                                type="radio"
+                                name="purpose"
+                                onChange={this.handleChange}
+                                value="Tithe"
+                                checked={this.state.purpose === "Tithe"}
+                              />
+                              <label className="form-check-label">Tithe</label>
+                            </div>
+                            <div className="form-check form-check-inline">
+                              <input
+                                className="form-check-input"
+                                type="radio"
+                                name="purpose"
+                                onChange={this.handleChange}
+                                value="Ministry Event"
+                                checked={
+                                  this.state.purpose === "Ministry Event"
+                                }
+                              />
+                              <label className="form-check-label">
+                                Ministry Event
+                              </label>
+                            </div>
+                            <div className="form-check form-check-inline">
+                              <input
+                                className="form-check-input"
+                                type="radio"
+                                name="purpose"
+                                onChange={this.handleChange}
+                                value="Other"
+                                checked={this.state.purpose === "Other"}
+                              />
+                              <label className="form-check-label">Other</label>
+                            </div>
+                          </div>
+                          <div
+                            className="form-group col-md-4"
+                            style={
+                              this.state.purpose === "Other"
+                                ? {}
+                                : { display: "none" }
+                            }
+                          >
+                            <label>Other Details/Description:</label>
+                            <textarea
+                              className="form-control"
+                              name="otherPurpose"
+                              rows="3"
+                              value={this.state.otherPurpose}
+                              onChange={this.handleChange}
+                            />
+                          </div>
                         </div>
-                        <div className="form-check form-check-inline">
-                          <input
-                            className="form-check-input"
-                            type="radio"
-                            name="purpose"
-                            onChange={this.handleChange}
-                            value="Ministry Event"
-                            checked={this.state.purpose === "Ministry Event"}
-                          />
-                          <label className="form-check-label">
-                            Ministry Event
-                          </label>
+                        <br />
+                        <h6>Non Member</h6>
+                        <hr />
+                        <div className="form-row">
+                          <div className="form-group col-md-4">
+                            <label>Name:</label>
+                            <input
+                              name="nonMemberName"
+                              value={this.state.nonMemberName}
+                              onChange={this.handleChange}
+                              type="text"
+                              className="form-control"
+                            />
+                          </div>
+                          <div className="form-group col-md-4">
+                            <label>Mobile Number:</label>
+                            <input
+                              name="nonMemberPhone"
+                              value={this.state.nonMemberPhone}
+                              onChange={this.handleChange}
+                              type="text"
+                              className="form-control"
+                            />
+                          </div>
+                          <div className="form-group col-md-4">
+                            <label>Email:</label>
+                            <input
+                              name="nonMemberEmail"
+                              value={this.state.nonMemberEmail}
+                              onChange={this.handleChange}
+                              type="text"
+                              className="form-control"
+                            />
+                          </div>
                         </div>
-                        <div className="form-check form-check-inline">
-                          <input
-                            className="form-check-input"
-                            type="radio"
-                            name="purpose"
-                            onChange={this.handleChange}
-                            value="Other"
-                            checked={this.state.purpose === "Other"}
-                          />
-                          <label className="form-check-label">Other</label>
+                        <div className="form-row">
+                          <div className="form-group col-md-4">
+                            <label>Posted by: {this.state.postedBy}</label>
+                          </div>
                         </div>
-                      </div>
-                      <div
-                        className="form-group col-md-4"
-                        style={
-                          this.state.purpose === "Other"
-                            ? {}
-                            : { display: "none" }
-                        }
-                      >
-                        <label>Other Details/Description:</label>
-                        <textarea
-                          className="form-control"
-                          name="otherPurpose"
-                          rows="3"
-                          value={this.state.otherPurpose}
-                          onChange={this.handleChange}
-                        />
-                      </div>
-                    </div>
-                  </div>
+                      </MDBCardBody>
+                    </MDBCard>
+                    <br />
+                    <button
+                      onClick={this.handleSubmit}
+                      className="btn btn-info"
+                    >
+                      &nbsp; Save &nbsp;
+                    </button>
+                  </form>
                 </div>
-                <br />
-                <div className="card">
-                  <div className="card-body">
-                    <h6>Non Member</h6>
-                    <hr />
-                    <div className="form-row">
-                      <div className="form-group col-md-4">
-                        <label>Name:</label>
-                        <input
-                          name="nonMemberName"
-                          value={this.state.nonMemberName}
-                          onChange={this.handleChange}
-                          type="text"
-                          className="form-control"
-                        />
-                      </div>
-                      <div className="form-group col-md-4">
-                        <label>Mobile Number:</label>
-                        <input
-                          name="nonMemberPhone"
-                          value={this.state.nonMemberPhone}
-                          onChange={this.handleChange}
-                          type="text"
-                          className="form-control"
-                        />
-                      </div>
-                      <div className="form-group col-md-4">
-                        <label>Email:</label>
-                        <input
-                          name="nonMemberEmail"
-                          value={this.state.nonMemberEmail}
-                          onChange={this.handleChange}
-                          type="text"
-                          className="form-control"
-                        />
-                      </div>
-                    </div>
-                    <div className="form-row">
-                      <div className="form-group col-md-4">
-                        <label>Posted by: {this.state.postedBy}</label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <br />
-                <button onClick={this.handleSubmit} className="btn btn-info">
-                  &nbsp; Save &nbsp;
-                </button>
-              </form>
+              </div>
             </div>
           </div>
         </div>

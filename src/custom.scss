@@ -5,16 +5,17 @@ $break-large: 1200px;
 // Import Bootstrap and its default variables
 @import "~bootstrap/scss/bootstrap.scss";
 .cnavbar {
-  height: 58px;
+  height: 65px;
+  @media screen and (max-width: $break-small) {
+    height: 220px;
+  }
 }
 .brandimg {
-  margin-top: 20px;
-  height: 80px;
-  width: 80px;
+  margin-top: 40px;
+  height: 100px;
+  width: 100px;
   @media screen and (max-width: $break-small) {
     margin-top: 0px;
-    height: 30px;
-    width: 30px;
   }
 }
 .padding-0 {
@@ -29,7 +30,10 @@ $break-large: 1200px;
   padding-right: 0;
   padding-left: 0;
 }
-h3,h6 {
+h3 {
+  color: #fff;
+}
+h6 {
   color: #6c757d;
 }
 .breadcrumb-item a {
@@ -39,6 +43,18 @@ h3,h6 {
   border-radius: 0;
 }
 
+.jumbotron {
+  background-image: url(../public/church-min.jpg);
+  height: 100vh;
+  color: #fff;
+}
+
+// Or short version
+.jumbotron {
+  background: url(../public/church-min.jpg) fixed center no-repeat;
+  background-size: cover;
+}
+
 //side nav
 .sidenav {
   height: 100%;
@@ -46,7 +62,6 @@ h3,h6 {
   position: fixed;
   z-index: 1;
   left: 0;
-  background-color: #6c757d;
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 60px;
@@ -58,8 +73,8 @@ h3,h6 {
 .sidenav a {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
-  font-size: 25px;
-  color: #fff;
+  font-size: 20px;
+  color: #6c757d;
   display: block;
   transition: 0.3s;
   @media screen and (max-height: 450px) {
@@ -68,10 +83,9 @@ h3,h6 {
 }
 
 .sidenav a:hover {
-  color: #fff;
-  border-bottom: 1px solid #fff;
+  color: #6c757d;
+  border-bottom: 1px solid #6c757d;
 }
-
 .sidenav .closebtn {
   position: absolute;
   top: 0;
@@ -80,20 +94,19 @@ h3,h6 {
   margin-left: 50px;
 }
 .sidenav .closebtn:hover {
-  color: #fff;
-  background-color: #6c757d;
+  color: #6c757d;
   border-bottom: none;
 }
 .menubtn {
   font-size: 30px;
   cursor: pointer;
   margin-left: 20px;
-  margin-top: 20px;
-  color: #fff;
+  margin-top: 50px;
+  color: #6c757d;
   position: fixed;
 }
 .menubtn:hover {
-  color: #fff;
+  color: #6c757d;
 }
 @media screen and (max-height: 450px) {
   .sidenav {
@@ -101,5 +114,39 @@ h3,h6 {
   }
   .sidenav a {
     font-size: 18px;
+  }
+}
+
+//spinner
+.lds-ripple {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ripple div {
+  position: absolute;
+  border: 4px solid #6c757d;
+  opacity: 1;
+  border-radius: 50%;
+  animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+.lds-ripple div:nth-child(2) {
+  animation-delay: -0.5s;
+}
+@keyframes lds-ripple {
+  0% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    top: 0px;
+    left: 0px;
+    width: 72px;
+    height: 72px;
+    opacity: 0;
   }
 }

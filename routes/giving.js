@@ -22,4 +22,16 @@ router.post("/add", async (req, res) => {
     });
   }
 });
+router.get("/givings", async (req, res) => {
+  console.log(chalk.yellow("========|Getting Givings|======"));
+  let getTxn = await helpers.getGivings();
+  if (getTxn.isSuccessful) {
+    res.status(200).json(getTxn.row);
+  } else {
+    res.json({
+      message: "Failed",
+      details: "Error getting givings",
+    });
+  }
+});
 module.exports = router;

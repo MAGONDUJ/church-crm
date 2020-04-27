@@ -11,13 +11,13 @@ import {
   MDBDropdown,
   MDBDropdownToggle,
   MDBDropdownMenu,
-  MDBDropdownItem
+  MDBDropdownItem,
 } from "mdbreact";
 import { BrowserRouter as Router } from "react-router-dom";
 
 class Navigation extends Component {
   state = {
-    isOpen: false
+    isOpen: false,
   };
 
   toggleCollapse = () => {
@@ -28,10 +28,10 @@ class Navigation extends Component {
     return (
       <Router>
         <MDBNavbar
-          color="purple"
+          color="default-color"
           dark
           expand="md"
-          className="sticky-top .bg-info cnavbar"
+          className="sticky-top cnavbar"
         >
           <MDBNavbarBrand>
             <img
@@ -41,35 +41,19 @@ class Navigation extends Component {
           </MDBNavbarBrand>
           <MDBNavbarToggler onClick={this.toggleCollapse} />
           <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
-            {/* <MDBNavbarNav right>
-              <MDBNavItem active>
-                <MDBNavLink to="#!">Home</MDBNavLink>
-              </MDBNavItem>
-              <MDBNavItem>
-                <MDBNavLink to="#!">Features</MDBNavLink>
-              </MDBNavItem>
-              <MDBNavItem>
-                <MDBNavLink to="#!">Pricing</MDBNavLink>
-              </MDBNavItem>
-              <MDBNavItem>
+            <MDBNavbarNav right>
+              <MDBNavItem className="mr-5 mt-2">
                 <MDBDropdown>
                   <MDBDropdownToggle nav caret>
-                    <span className="mr-2">Dropdown</span>
+                    Reports
                   </MDBDropdownToggle>
                   <MDBDropdownMenu>
-                    <MDBDropdownItem href="#!">Action</MDBDropdownItem>
-                    <MDBDropdownItem href="#!">Another Action</MDBDropdownItem>
-                    <MDBDropdownItem href="#!">
-                      Something else here
-                    </MDBDropdownItem>
-                    <MDBDropdownItem href="#!">
-                      Something else here
-                    </MDBDropdownItem>
+                    <MDBDropdownItem href="/Members">Members</MDBDropdownItem>
+                    <MDBDropdownItem href="/Families">Families</MDBDropdownItem>
+                    <MDBDropdownItem href="/Givings">Givings</MDBDropdownItem>
                   </MDBDropdownMenu>
                 </MDBDropdown>
               </MDBNavItem>
-            </MDBNavbarNav> */}
-            <MDBNavbarNav right>
               <MDBNavItem>
                 <MDBFormInline waves>
                   <div className="md-form my-0">
