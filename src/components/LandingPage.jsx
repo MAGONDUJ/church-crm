@@ -58,12 +58,6 @@ class LandingPage extends Component {
                       </MDBBtn>
                     </div>
                   </form>
-                  <MDBModalFooter>
-                    <div className="font-weight-light">
-                      <p>Not a member? Sign Up</p>
-                      <p>Forgot Password?</p>
-                    </div>
-                  </MDBModalFooter>
                 </MDBCardBody>
               </MDBCard>
             </div>
