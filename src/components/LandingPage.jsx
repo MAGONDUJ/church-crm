@@ -19,12 +19,11 @@ class LandingPage extends Component {
     return (
       <div className="jumbotron jumbotron-fluid">
         <div class="container">
-          <h1 class="display-4">AIC MILIMANI CRM</h1>
-          <hr class="my-4" />
-          <div className="row">
-            <div className="col align-self-start"></div>
-            <div className="col align-self-center"></div>
-            <div className="col align-self-end">
+          <div className="row" style={{ marginTop: "7%" }}>
+            <div className="col-md-8" style={{ marginTop: "10%" }}>
+              <h1 class="display-4">CHURCH CRM</h1>
+            </div>
+            <div className="col-md-4">
               <MDBCard>
                 <MDBCardBody>
                   <MDBCardHeader className="form-header deep-blue-gradient rounded">
