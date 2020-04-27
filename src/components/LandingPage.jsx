@@ -21,7 +21,7 @@ class LandingPage extends Component {
         <div class="container">
           <div className="row" style={{ marginTop: "7%" }}>
             <div className="col-md-8" style={{ marginTop: "10%" }}>
-              <h1 class="display-4">CHURCH CRM</h1>
+              <h1 class="display-4">AIC MILIMANI CHURCH CRM</h1>
             </div>
             <div className="col-md-4">
               <MDBCard>
