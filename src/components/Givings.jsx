@@ -21,7 +21,7 @@ class Givings extends Component {
   }
   componentDidMount() {
     this.setState({ loading: true });
-    fetch("http://localhost:6800/api/giving/givings/")
+    fetch("http://35.222.176.52:6800/api/giving/givings/")
       .then((response) => response.json())
       .then((data) => {
         let tmpArray = [];

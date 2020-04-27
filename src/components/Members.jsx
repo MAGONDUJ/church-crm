@@ -21,7 +21,7 @@ class Members extends Component {
   }
   componentDidMount() {
     this.setState({ loading: true });
-    fetch("http://localhost:6800/api/membership/members/")
+    fetch("http://35.222.176.52:6800/api/membership/members/")
       .then((response) => response.json())
       .then((data) => {
         let tmpArray = [];
