@@ -39,7 +39,9 @@ class Giving extends Component {
     this.handleSearch = this.handleSearch.bind(this);
   }
   componentDidMount() {
-    fetch("http://35.222.176.52:6800/api/membership/members/")
+    fetch(
+      "http://" + window.location.hostname + ":6800/api/membership/members/"
+    )
       .then((response) => response.json())
       .then((data) => {
         let tmpArray = [];
@@ -151,7 +153,10 @@ class Giving extends Component {
   handleSubmit = async (event) => {
     event.preventDefault();
     await axios
-      .post("http://35.222.176.52:6800/api/giving/add", this.state)
+      .post(
+        "http://" + window.location.hostname + ":6800/api/giving/add",
+        this.state
+      )
       .then((response) => {
         console.log("Backend Response: ", response.data);
         window.alert(response.data.details);

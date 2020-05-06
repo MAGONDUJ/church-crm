@@ -70,7 +70,9 @@ class HomePage extends Component {
     );
   }
   componentDidMount() {
-    fetch("http://35.222.176.52:6800/api/membership/families/")
+    fetch(
+      "http://" + window.location.hostname + ":6800/api/membership/families/"
+    )
       .then((response) => response.json())
       .then((data) => {
         let tmpArray = [];
@@ -129,7 +131,10 @@ class HomePage extends Component {
     formData.append("myFile", this.state.file);
     let imgPath = "";
     await axios
-      .post("http://35.222.176.52:6800/api/membership/upload", formData)
+      .post(
+        "http://" + window.location.hostname + ":6800/api/membership/upload",
+        formData
+      )
       .then((response) => {
         //console.log(response.data.profileImg);
         imgPath = response.data.profileImg;
@@ -177,7 +182,10 @@ class HomePage extends Component {
       professionalDataOS: this.state.professionalDataOS,
     };
     await axios
-      .post("http://35.222.176.52:6800/api/membership/add", params)
+      .post(
+        "http://" + window.location.hostname + ":6800/api/membership/add",
+        params
+      )
       .then((response) => {
         console.log("Backend Response: ", response.data);
         window.alert(response.data.details);
